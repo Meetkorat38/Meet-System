@@ -6,7 +6,7 @@ import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { WorkflowLine } from "@/components/site/WorkflowLine";
 import { ToolPill } from "@/components/site/ToolPill";
 import { ProjectVisual } from "@/components/site/ProjectVisual";
-import { ProjectArchPreview } from "@/components/site/ProjectArchPreview";
+
 import { projects } from "@/lib/projects";
 
 export const Route = createFileRoute("/")({
@@ -120,7 +120,7 @@ function Home() {
           {projects.map((p, i) => (
             <article
               key={p.slug}
-              className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start"
+              className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center"
             >
               <div
                 className={`lg:col-span-7 group ${
@@ -153,16 +153,12 @@ function Home() {
 
                 <ul className="mt-5 space-y-1.5 text-sm text-subtle-foreground">
                   {p.proves.map((s) => (
-                    <li key={s} className="flex gap-2">
-                      <span className="text-muted-foreground/60">—</span>
-                      {s}
+                    <li key={s} className="flex gap-2.5">
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-muted-foreground/60 shrink-0" />
+                      <span>{s}</span>
                     </li>
                   ))}
                 </ul>
-
-                <div className="mt-6">
-                  <ProjectArchPreview steps={p.flow} />
-                </div>
 
                 <Link
                   to="/projects/$slug"
