@@ -9,21 +9,17 @@ import { ProjectVisual } from "@/components/site/ProjectVisual";
 
 import { projects } from "@/lib/projects";
 
+const SITE_TITLE = "Meet Korat — Applied AI Engineer";
+const SITE_DESC =
+  "I ship production AI systems that automate real business operations — durable multi-provider pipelines, vision-LLM workflows, and internal tools used in the loop.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Meet Korat — AI Automation & Product Systems" },
-      {
-        name: "description",
-        content:
-          "I design and build practical AI-powered workflows that turn manual processes into reliable automated systems.",
-      },
-      { property: "og:title", content: "Meet Korat — AI Automation & Product Systems" },
-      {
-        property: "og:description",
-        content:
-          "Building AI automation systems, media workflows, and internal tools.",
-      },
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESC },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESC },
       { property: "og:type", content: "website" },
     ],
   }),
@@ -31,6 +27,73 @@ export const Route = createFileRoute("/")({
 });
 
 const visualVariants = ["video", "tools", "content"] as const;
+
+const experience = [
+  {
+    role: "Applied AI / Automation Engineer",
+    org: "Independent · client engagements",
+    period: "2024 — Present",
+    desc: "Shipped durable multi-provider AI pipelines on Inngest + Supabase Edge Functions: a founder-video production backend (6 AI providers, ~6 min/video), an end-to-end Hindi/Hinglish video pipeline (~2.2k LOC durable workflow), and a vision-LLM exam grader with self-consistency + arithmetic QC.",
+  },
+  {
+    role: "Product Engineer",
+    org: "Independent",
+    period: "2023 — 2024",
+    desc: "Built internal tools for marketing ops and distributor networks — typed RPC on Cloudflare Workers, RLS-scoped Postgres, Google Drive automation with stable-URL upserts. Hours per campaign collapsed to a 2-click run.",
+  },
+];
+
+const toolGroups = [
+  {
+    group: "AI Orchestration",
+    items: [
+      "Inngest",
+      "Lovable AI Gateway",
+      "Gemini 2.5 Pro / Flash",
+      "GPT-5",
+      "Function calling",
+      "Self-consistency",
+    ],
+  },
+  {
+    group: "AI Providers",
+    items: [
+      "ElevenLabs TTS + Scribe",
+      "HeyGen",
+      "KIE Grok-Imagine",
+      "Kie.ai",
+      "Submagic",
+      "Rendi (FFmpeg)",
+    ],
+  },
+  {
+    group: "Backend & Runtime",
+    items: [
+      "Supabase (Postgres + RLS + Auth + Storage + Realtime + Edge)",
+      "Cloudflare Workers",
+      "TanStack Start",
+      "Deno Edge Functions",
+      "Node.js",
+      "Webhooks",
+    ],
+  },
+  {
+    group: "Frontend",
+    items: ["React 18 / 19", "TypeScript", "Tailwind", "shadcn/ui", "Fabric.js", "react-pdf"],
+  },
+  {
+    group: "Media",
+    items: ["FFmpeg", "Remotion", "Rendi", "Canvas rendering"],
+  },
+];
+
+const targetRoles = [
+  "Applied AI Engineer",
+  "AI Automation Engineer",
+  "AI Product Engineer",
+  "Founding Engineer",
+  "Solutions Engineer",
+];
 
 function Home() {
   return (
@@ -50,20 +113,21 @@ function Home() {
             className="mt-5 font-mono text-xs text-subtle-foreground animate-fade-up"
             style={{ animationDelay: "60ms" }}
           >
-            Meet Korat
+            Meet Korat · Applied AI Engineer
           </p>
           <h1
             className="mt-4 text-[38px] leading-[1.05] sm:text-6xl font-medium tracking-tight animate-fade-up"
             style={{ animationDelay: "120ms" }}
           >
-            Building AI automation systems, media workflows, and internal tools.
+            I build production AI systems that automate real business operations.
           </h1>
           <p
             className="mt-5 text-base sm:text-lg text-subtle-foreground leading-relaxed max-w-xl mx-auto animate-fade-up"
             style={{ animationDelay: "220ms" }}
           >
-            I design and build practical AI-powered workflows that turn manual
-            processes into reliable automated systems.
+            Durable multi-provider pipelines, vision-LLM workflows, and internal
+            tools that ship — built on Inngest, Supabase, Edge Functions, and
+            the modern LLM stack.
           </p>
           <div
             className="mt-7 flex flex-wrap items-center justify-center gap-2.5 animate-fade-up"
@@ -73,16 +137,23 @@ function Home() {
               href="#projects"
               className="inline-flex items-center gap-2 h-10 px-4 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-colors"
             >
-              View Projects
+              See the systems I&apos;ve shipped
               <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href="#contact"
               className="inline-flex items-center gap-2 h-10 px-4 rounded-full border border-border bg-card text-sm font-medium hover:bg-pill-hover transition-colors"
             >
-              Contact Me
+              Hire me
             </a>
           </div>
+
+          <p
+            className="mt-5 font-mono text-[11px] text-muted-foreground animate-fade-up"
+            style={{ animationDelay: "380ms" }}
+          >
+            Open to: {targetRoles.join(" · ")}
+          </p>
 
           <div
             className="mt-12 animate-fade-up"
@@ -108,11 +179,11 @@ function Home() {
             01 — Selected Projects
           </p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-medium">
-            Selected Projects
+            Production AI systems, not demos.
           </h2>
           <p className="mt-3 text-subtle-foreground text-base sm:text-lg">
-            Real AI workflows, automation tools, and product systems built
-            around practical problems.
+            Each project below is a real system in production: orchestration,
+            multiple AI providers, durable state, and a real business outcome.
           </p>
         </div>
 
@@ -136,17 +207,31 @@ function Home() {
               </div>
               <div className={`lg:col-span-5 ${i % 2 === 1 ? "lg:order-1" : ""}`}>
                 <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                  Project 0{i + 1}
+                  Project 0{i + 1} · {p.category}
                 </p>
                 <h3 className="mt-2 text-2xl sm:text-3xl font-medium">
                   {p.title}
                 </h3>
                 <p className="mt-3 text-subtle-foreground leading-relaxed">
-                  {p.summary}
+                  {p.oneLiner}
                 </p>
 
+                <dl className="mt-5 grid grid-cols-2 gap-3">
+                  {p.metrics.slice(0, 4).map((m) => (
+                    <div
+                      key={m.label}
+                      className="rounded-xl border border-border bg-card px-3 py-2.5"
+                    >
+                      <dt className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                        {m.label}
+                      </dt>
+                      <dd className="mt-0.5 text-sm font-medium">{m.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
                 <div className="mt-5 flex flex-wrap gap-1.5">
-                  {p.tools.map((t) => (
+                  {p.tools.slice(0, 6).map((t) => (
                     <ToolPill key={t}>{t}</ToolPill>
                   ))}
                 </div>
@@ -165,7 +250,7 @@ function Home() {
                   params={{ slug: p.slug }}
                   className="mt-6 inline-flex items-center gap-2 h-10 px-4 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-colors group/btn"
                 >
-                  View Case Study
+                  Read the case study
                   <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
                 </Link>
               </div>
@@ -181,8 +266,11 @@ function Home() {
             02 — Background
           </p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-medium">
-            Experience &amp; Tools
+            Experience &amp; Stack
           </h2>
+          <p className="mt-3 text-subtle-foreground text-base sm:text-lg">
+            What I&apos;ve shipped, and the production AI stack I work in daily.
+          </p>
         </div>
 
         <div className="mt-12 grid lg:grid-cols-2 gap-12">
@@ -191,20 +279,7 @@ function Home() {
               Experience
             </h3>
             <ol className="mt-6 space-y-8 relative before:absolute before:left-[5px] before:top-2 before:bottom-2 before:w-px before:bg-border">
-              {[
-                {
-                  role: "AI Automation Builder",
-                  org: "Because",
-                  period: "2025 — Present",
-                  desc: "Built AI workflows, internal tools, video automation systems, and operational pipelines.",
-                },
-                {
-                  role: "Product Engineer",
-                  org: "Independent",
-                  period: "2023 — 2025",
-                  desc: "Shipped internal tools and media automations for small teams and product studios.",
-                },
-              ].map((e) => (
+              {experience.map((e) => (
                 <li key={e.role} className="relative pl-7">
                   <span className="absolute left-0 top-2 h-2.5 w-2.5 rounded-full bg-foreground" />
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -226,27 +301,10 @@ function Home() {
 
           <div>
             <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-              Tools I Use
+              Production AI Stack
             </h3>
             <div className="mt-6 space-y-7">
-              {[
-                {
-                  group: "AI / Automation",
-                  items: ["OpenAI", "Claude", "n8n", "Make", "Zapier"],
-                },
-                {
-                  group: "Frontend",
-                  items: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-                },
-                {
-                  group: "Backend / Workflow",
-                  items: ["Node.js", "Python", "APIs", "Webhooks", "Queues"],
-                },
-                {
-                  group: "Media",
-                  items: ["FFmpeg", "Cloudinary", "Video generation"],
-                },
-              ].map((g) => (
+              {toolGroups.map((g) => (
                 <div key={g.group}>
                   <p className="text-sm font-medium">{g.group}</p>
                   <div className="mt-2.5 flex flex-wrap gap-1.5">
@@ -268,11 +326,11 @@ function Home() {
             03 — Contact
           </p>
           <h2 className="mt-4 text-3xl sm:text-5xl font-medium tracking-tight max-w-2xl mx-auto">
-            Have a workflow worth automating?
+            Looking for an engineer who ships production AI systems?
           </h2>
           <p className="mt-4 text-subtle-foreground max-w-lg mx-auto">
-            I&apos;m open to AI automation, product engineering, and workflow
-            infrastructure opportunities.
+            Open to Applied AI, AI Automation, AI Product, Founding Engineer,
+            and Solutions Engineer roles. Full-time or contract.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
             <a
