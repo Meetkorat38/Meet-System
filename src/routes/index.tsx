@@ -6,6 +6,7 @@ import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { WorkflowLine } from "@/components/site/WorkflowLine";
 import { ToolPill } from "@/components/site/ToolPill";
 import { ProjectVisual } from "@/components/site/ProjectVisual";
+import { AutomationGallery } from "@/components/site/AutomationGallery";
 
 import { projects } from "@/lib/projects";
 
