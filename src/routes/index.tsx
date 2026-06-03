@@ -326,7 +326,7 @@ function Home() {
       <section id="contact" className="mx-auto max-w-6xl px-2 sm:px-4 pt-24 sm:pt-32">
         <div className="paper rounded-3xl border border-border px-6 sm:px-12 py-16 sm:py-24 text-center">
           <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-            03 — Contact
+            04 — Contact
           </p>
           <h2 className="mt-4 text-3xl sm:text-5xl font-medium tracking-tight max-w-2xl mx-auto">
             Looking for an engineer who ships production AI systems?
