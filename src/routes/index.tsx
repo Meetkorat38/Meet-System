@@ -260,11 +260,13 @@ function Home() {
         </div>
       </section>
 
+      <AutomationGallery />
+
       {/* Experience + Tools */}
       <section className="mx-auto max-w-6xl px-2 sm:px-4 pt-24 sm:pt-32">
         <div className="max-w-2xl">
           <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-            02 — Background
+            03 — Background
           </p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-medium">
             Experience &amp; Stack
