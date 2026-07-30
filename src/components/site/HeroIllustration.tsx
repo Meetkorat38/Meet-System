@@ -1,34 +1,76 @@
 export function HeroIllustration() {
   return (
-    <svg
-      viewBox="0 0 320 140"
-      fill="none"
-      className="w-full max-w-md mx-auto text-foreground/80"
-      aria-hidden
-    >
-      {/* desk */}
-      <line x1="20" y1="120" x2="300" y2="120" stroke="currentColor" strokeWidth="1.2" />
-      {/* laptop */}
-      <rect x="120" y="70" width="80" height="50" rx="4" stroke="currentColor" strokeWidth="1.2" fill="none" />
-      <line x1="115" y1="120" x2="205" y2="120" stroke="currentColor" strokeWidth="1.2" />
-      {/* person */}
-      <circle cx="160" cy="48" r="10" stroke="currentColor" strokeWidth="1.2" fill="none" />
-      <path d="M145 70 Q160 56 175 70" stroke="currentColor" strokeWidth="1.2" fill="none" />
-      {/* node graph left */}
-      <circle cx="50" cy="50" r="6" stroke="currentColor" strokeWidth="1.2" fill="var(--color-background)" />
-      <circle cx="80" cy="30" r="4" stroke="currentColor" strokeWidth="1.2" fill="var(--color-background)" />
-      <circle cx="85" cy="75" r="4" stroke="currentColor" strokeWidth="1.2" fill="var(--color-background)" />
-      <line x1="56" y1="50" x2="76" y2="32" stroke="currentColor" strokeWidth="1" />
-      <line x1="56" y1="52" x2="81" y2="73" stroke="currentColor" strokeWidth="1" />
-      {/* document right */}
-      <rect x="240" y="30" width="46" height="56" rx="3" stroke="currentColor" strokeWidth="1.2" fill="none" />
-      <line x1="248" y1="44" x2="278" y2="44" stroke="currentColor" strokeWidth="1" />
-      <line x1="248" y1="52" x2="272" y2="52" stroke="currentColor" strokeWidth="1" />
-      <line x1="248" y1="60" x2="278" y2="60" stroke="currentColor" strokeWidth="1" />
-      <line x1="248" y1="68" x2="266" y2="68" stroke="currentColor" strokeWidth="1" />
-      {/* connector lines */}
-      <path d="M90 60 Q105 65 120 80" stroke="currentColor" strokeWidth="1" strokeDasharray="2 3" fill="none" />
-      <path d="M200 80 Q220 70 240 60" stroke="currentColor" strokeWidth="1" strokeDasharray="2 3" fill="none" />
-    </svg>
+    <div className="relative w-full max-w-lg mx-auto">
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/10 via-transparent to-accent-soft/10 blur-2xl" />
+      <svg
+        viewBox="0 0 400 180"
+        fill="none"
+        className="relative w-full text-foreground/75"
+        aria-hidden
+      >
+        {/* Central hub */}
+        <rect
+          x="165"
+          y="65"
+          width="70"
+          height="50"
+          rx="8"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          fill="var(--color-card)"
+          className="drop-shadow-sm"
+        />
+        <text
+          x="200"
+          y="92"
+          textAnchor="middle"
+          className="fill-current text-[9px] font-mono"
+          style={{ fontFamily: "var(--font-mono)" }}
+        >
+          AI Agent
+        </text>
+        <circle cx="200" cy="105" r="3" fill="oklch(0.55 0.2 265)" className="animate-pulse" />
+
+        {/* Input node */}
+        <g>
+          <rect x="30" y="75" width="56" height="36" rx="6" stroke="currentColor" strokeWidth="1.2" fill="var(--color-card)" />
+          <text x="58" y="96" textAnchor="middle" className="fill-current text-[8px] font-mono" style={{ fontFamily: "var(--font-mono)" }}>Input</text>
+        </g>
+
+        {/* Workflow node */}
+        <g>
+          <rect x="90" y="30" width="56" height="36" rx="6" stroke="currentColor" strokeWidth="1.2" fill="var(--color-card)" />
+          <text x="118" y="51" textAnchor="middle" className="fill-current text-[8px] font-mono" style={{ fontFamily: "var(--font-mono)" }}>Workflow</text>
+        </g>
+
+        {/* LLM node */}
+        <g>
+          <rect x="90" y="130" width="56" height="36" rx="6" stroke="currentColor" strokeWidth="1.2" fill="var(--color-card)" />
+          <text x="118" y="151" textAnchor="middle" className="fill-current text-[8px] font-mono" style={{ fontFamily: "var(--font-mono)" }}>LLM API</text>
+        </g>
+
+        {/* Output nodes */}
+        <g>
+          <rect x="310" y="45" width="56" height="36" rx="6" stroke="currentColor" strokeWidth="1.2" fill="var(--color-card)" />
+          <text x="338" y="66" textAnchor="middle" className="fill-current text-[8px] font-mono" style={{ fontFamily: "var(--font-mono)" }}>Video</text>
+        </g>
+        <g>
+          <rect x="310" y="95" width="56" height="36" rx="6" stroke="currentColor" strokeWidth="1.2" fill="var(--color-card)" />
+          <text x="338" y="116" textAnchor="middle" className="fill-current text-[8px] font-mono" style={{ fontFamily: "var(--font-mono)" }}>Voice</text>
+        </g>
+
+        {/* Animated connection paths */}
+        <path d="M86 93 L165 90" stroke="oklch(0.55 0.2 265)" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-60" />
+        <path d="M146 48 L165 75" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+        <path d="M146 148 L165 105" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+        <path d="M265 90 L310 63" stroke="oklch(0.55 0.2 265)" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-60" />
+        <path d="M265 95 L310 113" stroke="oklch(0.55 0.2 265)" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-60" />
+
+        {/* Flow dots */}
+        <circle cx="125" cy="90" r="2.5" fill="oklch(0.55 0.2 265)" style={{ animation: "pulse-soft 2s ease infinite" }} />
+        <circle cx="285" cy="75" r="2.5" fill="oklch(0.55 0.2 265)" style={{ animation: "pulse-soft 2s ease infinite 0.5s" }} />
+        <circle cx="285" cy="105" r="2.5" fill="oklch(0.55 0.2 265)" style={{ animation: "pulse-soft 2s ease infinite 1s" }} />
+      </svg>
+    </div>
   );
 }

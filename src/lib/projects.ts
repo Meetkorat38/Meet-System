@@ -23,12 +23,13 @@ export type Project = {
   recruiterHighlights: string[];
   metrics: ProjectMetric[];
   accent?: string;
+  videoSrc?: string;
 };
 
 export const projects: Project[] = [
   {
     slug: "founder-video-pipeline",
-    title: "Founder Video Pipeline",
+    title: "Founder Video Automation Platform",
     category: "Durable multi-provider AI pipeline",
     oneLiner:
       "One approve click → a finished vertical founder video in ~6 minutes.",
@@ -123,10 +124,11 @@ export const projects: Project[] = [
       { label: "Edge functions", value: "17" },
       { label: "Manual time saved", value: "2–3 hr → 1 click" },
     ],
+    videoSrc: "/portfolio/founder-voice-showcase.mp4",
   },
   {
     slug: "swiftee",
-    title: "Swiftee — Topic to Video",
+    title: "Swiftee Educational Video Platform",
     category: "Durable AI video pipeline · Hindi / Hinglish",
     oneLiner:
       "Type a topic, get a finished 60-second educational short with mascot, voice, and Hinglish subtitles.",
@@ -219,10 +221,98 @@ export const projects: Project[] = [
       { label: "Pipeline LOC", value: "~2.2k" },
       { label: "Slides / video", value: "10" },
     ],
+    videoSrc: "/portfolio/swiftee-showcase.mp4",
+  },
+  {
+    slug: "lead-qualification",
+    title: "AI Lead Qualification Platform",
+    category: "Voice AI · Lead ops · Conversation analytics",
+    oneLiner:
+      "AI-powered lead qualification with chatbots, OTP verification, Voice AI, and conversation insights.",
+    summary:
+      "End-to-end lead qualification platform integrating chatbots, phone verification, OTP flows, SIP-based Voice AI calling, and AI-generated conversation summaries in a unified dashboard.",
+    elevatorPitch:
+      "Inbound leads are qualified through a multi-channel stack — web chatbot, OTP phone verification, and AI voice calls via SIP trunking — with every conversation analyzed for intent, objections, and next steps. Operators get a dashboard with AI-generated summaries instead of reading every transcript.",
+    description:
+      "Production platform that replaces manual lead triage with automated qualification, verification, and voice outreach — surfacing structured insights for sales teams.",
+    tools: [
+      "OpenAI",
+      "ElevenLabs",
+      "SIP Trunking",
+      "Webhooks",
+      "n8n",
+      "Node.js",
+      "Supabase",
+      "PostgreSQL",
+      "REST APIs",
+    ],
+    proves: [
+      "Multi-channel lead qualification (chat, OTP, voice)",
+      "Voice AI with SIP trunking integration",
+      "Conversation analytics and AI summaries",
+      "Production dashboard for sales ops",
+    ],
+    flow: [
+      "Lead",
+      "Chatbot",
+      "OTP Verify",
+      "Voice AI",
+      "Analytics",
+      "Dashboard",
+    ],
+    role: "Solo full-stack + AI engineer",
+    status: "Production",
+    year: "2025",
+    problem:
+      "Inbound leads sat unqualified in shared inboxes. Manual phone verification and triage slowed sales response. Call insights were trapped in recordings nobody had time to review.",
+    solution:
+      "A unified platform where leads enter via chatbot, pass OTP phone verification, get qualified by AI voice calls through SIP trunking, and surface in a dashboard with AI-generated conversation summaries and scoring.",
+    buildNotes: [
+      "Chatbot flow extracts firmographics and intent before routing to verification",
+      "OTP verification gates high-value leads before voice outreach",
+      "SIP trunking enables AI voice calls with ElevenLabs TTS and speech-to-text",
+      "Conversation analytics pipeline extracts objections, sentiment, and action items",
+      "Dashboard aggregates lead status, call outcomes, and AI summaries for sales reps",
+    ],
+    keyDecisions: [
+      {
+        title: "Multi-channel qualification, not chat-only",
+        detail:
+          "Phone verification and voice calls catch leads that chat alone misses — especially in markets where voice is the primary sales channel.",
+      },
+      {
+        title: "AI summaries over raw transcripts",
+        detail:
+          "Sales reps get structured insights (intent, objections, next steps) instead of wall-of-text transcripts — dramatically faster triage.",
+      },
+      {
+        title: "SIP trunking for production voice",
+        detail:
+          "Direct SIP integration gives control over call routing, recording, and cost — versus relying on a single SaaS voice provider.",
+      },
+    ],
+    result: [
+      "Every inbound lead qualified and routed within seconds",
+      "Voice outreach automated with AI-generated conversation insights",
+      "Sales team operates from a single dashboard with AI summaries",
+      "OTP verification reduces junk leads before voice spend",
+    ],
+    recruiterHighlights: [
+      "End-to-end Voice AI with SIP trunking in production",
+      "Multi-channel qualification: chat → OTP → voice → analytics",
+      "AI conversation summaries as a product feature, not a demo",
+      "Full-stack: frontend dashboard, backend APIs, voice infra",
+    ],
+    metrics: [
+      { label: "Channels", value: "Chat + Voice + OTP" },
+      { label: "Voice AI", value: "SIP + ElevenLabs" },
+      { label: "Insights", value: "AI summaries" },
+      { label: "Status", value: "Production" },
+    ],
   },
   {
     slug: "autograde",
-    title: "AutoGrade — Vision-LLM Exam Grader",
+    title: "AutoGrade — AI Paper Evaluation",
     category: "Vision-LLM pipeline · determinism + QC",
     oneLiner:
       "Upload a handwritten student paper, get auditable AI grades with bounding-box evidence in ~2 minutes.",
@@ -317,7 +407,7 @@ export const projects: Project[] = [
   },
   {
     slug: "pryzen-creatives",
-    title: "Pryzen Creatives",
+    title: "Personalized Creative Distribution Platform",
     category: "Personalization pipeline · stable Drive URLs",
     oneLiner:
       "Two clicks fan out a co-branded creative to every distributor with a Google Drive link that never changes.",

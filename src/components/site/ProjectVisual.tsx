@@ -1,11 +1,20 @@
 type Props = {
   label: string;
   variant?: "video" | "screenshot" | "tools" | "content";
+  className?: string;
+  videoSrc?: string;
+  videoControls?: boolean;
 };
 
-export function ProjectVisual({ label, variant = "screenshot" }: Props) {
+export function ProjectVisual({
+  label,
+  variant = "screenshot",
+  className = "",
+  videoSrc,
+  videoControls = false,
+}: Props) {
   return (
-    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_0_oklch(0_0_0_/_0.03),0_20px_40px_-24px_oklch(0_0_0_/_0.15)]">
+    <div className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_0_oklch(0_0_0_/_0.03),0_24px_48px_-20px_oklch(0_0_0_/_0.12)] ring-1 ring-foreground/5 ${className}`}>
       {/* mock browser chrome */}
       <div className="flex items-center gap-1.5 px-4 h-8 border-b border-border bg-subtle">
         <span className="h-2.5 w-2.5 rounded-full bg-border" />
@@ -16,11 +25,28 @@ export function ProjectVisual({ label, variant = "screenshot" }: Props) {
         </span>
       </div>
 
-      {variant === "video" && <VideoMock />}
+      {variant === "video" &&
+        (videoSrc ? <PortfolioVideo src={videoSrc} controls={videoControls} /> : <VideoMock />)}
       {variant === "tools" && <ToolsMock />}
       {variant === "content" && <ContentMock />}
       {variant === "screenshot" && <ToolsMock />}
     </div>
+  );
+}
+
+function PortfolioVideo({ src, controls }: { src: string; controls: boolean }) {
+  return (
+    <video
+      className="h-[calc(100%-2rem)] w-full bg-black object-cover"
+      src={src}
+      controls={controls}
+      autoPlay={!controls}
+      muted={!controls}
+      loop={!controls}
+      playsInline
+      preload="metadata"
+      aria-label="Founder Voice product showcase video"
+    />
   );
 }
 

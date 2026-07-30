@@ -14,11 +14,15 @@ dist-ssr
 .vinxi
 .tanstack/**
 .nitro
+.vercel
 *.local
 
-# Wrangler / Cloudflare
-.wrangler/
-.dev.vars
+# Local tooling / caches
+.npm-cache/
+.cursor/
+
+# HyperFrames source projects (site uses public/portfolio assets)
+videos/
 
 # Editor directories and files
 .vscode/*

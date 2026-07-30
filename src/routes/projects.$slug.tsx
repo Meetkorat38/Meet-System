@@ -102,7 +102,12 @@ function CaseStudy() {
           </header>
 
           <div className="mt-10">
-            <ProjectVisual label={p.title} variant="video" />
+            <ProjectVisual
+              label={p.title}
+              variant="video"
+              videoSrc={p.videoSrc}
+              videoControls={Boolean(p.videoSrc)}
+            />
           </div>
 
           <Section title="Metrics">
