@@ -5,8 +5,8 @@ import { projects } from "@/lib/projects";
 import { WorkflowLine } from "@/components/site/WorkflowLine";
 
 const PIPELINE_LOGS = [
-  { id: "founder-video", label: "founder-video-pipeline", stages: ["script", "tts", "heygen", "b-roll", "publish"] },
-  { id: "swiftee", label: "swiftee-educational", stages: ["topic", "images", "voice", "ffmpeg", "mp4"] },
+  { id: "founder-video", label: "founder-voice", stages: ["script", "tts", "heygen", "b-roll", "telegram"] },
+  { id: "swiftee", label: "swiftee-educational", stages: ["topic", "script", "voice", "ffmpeg", "mp4"] },
   { id: "lead-qual", label: "lead-qualification", stages: ["chatbot", "otp", "voice-ai", "insights"] },
   { id: "autograde", label: "autograde-vision", stages: ["ocr", "extract", "grade", "qc", "report"] },
 ];

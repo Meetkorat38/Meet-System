@@ -1,5 +1,17 @@
 export type ProjectMetric = { label: string; value: string };
 
+export type ProjectGalleryImage = {
+  src: string;
+  label: string;
+};
+
+export type ProjectSampleOutput = {
+  topic: string;
+  description?: string;
+  videoSrc: string;
+  series?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -23,205 +35,266 @@ export type Project = {
   recruiterHighlights: string[];
   metrics: ProjectMetric[];
   accent?: string;
+  thumbnailSrc?: string;
   videoSrc?: string;
+  gallery?: ProjectGalleryImage[];
+  sampleOutputs?: ProjectSampleOutput[];
 };
 
 export const projects: Project[] = [
   {
     slug: "founder-video-pipeline",
-    title: "Founder Video Automation Platform",
-    category: "Durable multi-provider AI pipeline",
+    title: "Founder Voice",
+    category: "Founder content automation · LinkedIn / Instagram",
     oneLiner:
-      "One approve click → a finished vertical founder video in ~6 minutes.",
+      "Turn an approved founder script into a news-grounded, publish-ready short — avatar, b-roll, captions, music — delivered to Telegram.",
     summary:
-      "Internal admin tool that turns one approved short-form post into a finished vertical video — talking-head avatar, AI b-roll, animated subtitles, music — and ships it to Telegram.",
+      "Founder Voice converts founder opinions into complete LinkedIn and Instagram videos. Choose a founder, paste a script, follow the live pipeline, inspect the word-anchored edit plan and news references, then review the finished cut.",
     elevatorPitch:
-      "A durable Inngest workflow stitches ElevenLabs, HeyGen, KIE Grok-Imagine, Submagic and Gemini behind a single approve click. Edge functions stay stateless; Inngest owns state, retries, per-key concurrency, and event waits. One ghostwriter now runs a content backoffice for a roster of founders.",
+      "A durable Inngest pipeline stitches Telegram workflow, AI script/voice, HeyGen avatars, news-grounded b-roll, captions, and FFmpeg compositing behind one approve action. Typical manual edit time drops from about three hours to about four minutes — with duplicate-render protection and live stage observability.",
     description:
-      "Production backend behind a ghostwriter-for-founders service: 17 Supabase edge functions, ~7,100 LOC, 7 DB tables, 4 storage buckets, 8 admin pages, 6 AI providers — all coordinated by Inngest with live observability.",
+      "Production platform for founder-led short-form: Telegram intake, voice cloning, AI avatars, b-roll, subtitles, automated rendering, and publish-ready delivery — orchestrated with Inngest, Supabase, and a multi-provider AI stack.",
     tools: [
-      "TypeScript",
-      "React 18",
-      "Supabase",
+      "Telegram",
       "Inngest",
-      "Remotion",
-      "FFmpeg",
+      "OpenRouter",
       "ElevenLabs",
       "HeyGen",
-      "KIE Grok-Imagine",
-      "Submagic",
-      "Gemini 2.5 Flash",
+      "FFmpeg",
+      "Supabase",
+      "Railway",
+      "TypeScript",
+      "React",
     ],
     proves: [
-      "Durable multi-provider AI orchestration",
-      "Per-key concurrency + idempotency with Inngest",
-      "Failure-mode debugging across 6 AI APIs",
-      "Edge-runtime architecture decisions",
+      "End-to-end founder content pipeline in production",
+      "Word-level transcript anchors for edits and captions",
+      "News-grounded b-roll research, not generic stock",
+      "Durable multi-provider orchestration with Inngest",
     ],
     flow: [
-      "Webhook",
-      "Inngest",
+      "Founder",
+      "Script",
       "TTS + Avatar",
-      "Scribe ASR",
-      "Edit Plan",
-      "B-roll",
-      "Composite",
+      "Edit plan",
+      "News + B-roll",
       "Captions",
+      "Composite",
       "Telegram",
     ],
     role: "Solo full-stack + AI infra engineer",
     status: "Production",
     year: "2025",
     problem:
-      "Founder-led content is the highest-converting B2B channel but does not scale — the founder must write, record, edit, caption, and post. Editors stitched HeyGen, ElevenLabs, CapCut and stock footage by hand per post, with no durable state and per-founder style trapped in editor heads.",
+      "Founder-led LinkedIn and Instagram video converts, but production does not scale. Ghostwriters and editors stitched voice, HeyGen, CapCut, captions, and stock b-roll by hand — hours per post, inconsistent style per founder, and no durable state when a provider failed mid-render.",
     solution:
-      "A single `approve` click in Telegram triggers a durable Inngest workflow. Per-founder style (voice ID, HeyGen avatar, masterprompt, caption preset, b-roll archetype, music) lives as data on the `founders` table — one pipeline, N distinct visual identities. Every stage transition is recorded in `bot_logs` with the raw provider payload for forensics.",
+      "Founder Voice: pick a founder profile (voice, avatar, caption style), paste an approved script, and send. A live pipeline renders the avatar, anchors every edit to exact transcript words, pulls real news references for b-roll, burns captions and music, then delivers the finished vertical video to Telegram — ready to publish.",
     buildNotes: [
-      "Pre-flight HeyGen quota check before ElevenLabs TTS so the stage fails fast and cheap instead of burning credits",
-      "Re-transcribe the rendered HeyGen video with ElevenLabs Scribe v2 (not the source TTS) so captions stay in sync after the avatar re-encode",
-      "Gemini 2.5 Flash with function-call schema to guarantee valid Remotion edit plans",
-      "KIE Grok-Imagine T2I → I2V chain for cinematic b-roll at ~$0.10/clip, composited over the avatar by FFmpeg",
-      "Submagic captions bridged into Inngest events so the stage waits on `step.waitForEvent` instead of polling",
-      "Live `PipelineStepper` UI driven by Supabase Realtime, surfacing the actual provider error string from `bot_logs`",
+      "Telegram workflow for intake and delivery — operators approve and receive without leaving chat",
+      "Per-founder config (voice ID, HeyGen avatar, prompts, caption preset, music) so one pipeline serves many identities",
+      "Word-anchored edit plan: every cut and caption lands on exact transcript words from ASR on the rendered avatar video",
+      "News research feeds b-roll so visuals stay topical instead of generic stock loops",
+      "Duplicate-render protection so retries and restarts do not burn credits twice",
+      "Inngest durable steps with live pipeline UI — stage status and provider errors visible while the job runs",
     ],
     keyDecisions: [
       {
-        title: "Inngest over recursive edge orchestrator",
+        title: "Approve-to-Telegram as the product loop",
         detail:
-          "Replaced ~500 LOC of homegrown recursive `run-pipeline` with Inngest behind a per-founder feature flag for a zero-downtime cutover. Gained durable steps, per-key concurrency (`post_id:1`, `founder_id:3`), and event-driven `waitForEvent`.",
+          "The operator experience is intentionally small: choose founder → paste script → watch pipeline → get MP4 in Telegram. Everything else (TTS, avatar, research, captions, composite) is infrastructure behind that loop.",
       },
       {
-        title: "Scribe-on-rendered-video, not source TTS",
+        title: "Word-level transcript anchors, not guessed timings",
         detail:
-          "Subtitle drift was caused by HeyGen's lead-in pad and re-encode. Re-running Scribe v2 on the rendered MP4 — not the audio we generated — fixed it. A non-obvious failure mode debugged at the system level.",
+          "Edits and captions are tied to ASR on the rendered talking-head video so timing survives HeyGen lead-in and re-encode — the difference between “almost synced” and publishable.",
       },
       {
-        title: "Permanent vs transient failure classifier",
+        title: "News-grounded b-roll over stock libraries",
         detail:
-          "Watchdog skips auto-retries on `payment_required` and KIE validation errors to prevent retry storms, while still re-kicking stuck transient stages.",
+          "B-roll is driven by real news references for the script, so each founder video feels current and specific rather than filled with generic footage.",
       },
       {
-        title: "Split render: edge prepares, worker renders",
+        title: "Inngest for durable multi-provider orchestration",
         detail:
-          "Edge runtime has no Chromium and a 150s ceiling. Edge only prepares ASS subtitles + edit plan; Remotion runs outside edge for the actual render.",
+          "ElevenLabs, HeyGen, research, and render each fail independently. Named durable steps, concurrency keys, and event waits keep the pipeline retry-safe without a homegrown queue.",
       },
     ],
     result: [
-      "2–3 hour manual editor workflow → ~6 minutes of unattended compute and one approve click",
-      "6 AI providers stitched with consistent retry, cost-tracking and error-surfacing",
-      "Live observability: per-stage status + actual provider error string in the UI",
-      "Zero-downtime cutover from legacy orchestrator via per-founder feature flag",
+      "Manual edit time: ~3 hours → ~4 minutes of unattended pipeline + one approve",
+      "Publish-ready LinkedIn / Instagram verticals with avatar, captions, music, and topical b-roll",
+      "Word-anchored edit plans operators can inspect before trusting the cut",
+      "Duplicate-render protection and live stage observability in production",
     ],
     recruiterHighlights: [
-      "Production durable-workflow design with Inngest concurrency keys + event waits",
-      "Six-provider AI orchestration shipped solo",
-      "System-level debugging of subtitle drift via ASR-on-rendered-video",
-      "Self-healing pipeline with permanent vs transient failure classification",
+      "Shipped a full founder content product: Telegram → multi-AI render → Telegram delivery",
+      "Transcript-anchored editing as a reliability feature, not a caption afterthought",
+      "News-grounded b-roll pipeline instead of stock filler",
+      "Durable Inngest orchestration across voice, avatar, research, and FFmpeg",
     ],
     metrics: [
-      { label: "Per video", value: "~6 min" },
-      { label: "AI providers", value: "6" },
-      { label: "Edge functions", value: "17" },
-      { label: "Manual time saved", value: "2–3 hr → 1 click" },
+      { label: "Manual → auto", value: "~3 hr → ~4 min" },
+      { label: "Output", value: "LinkedIn / IG short" },
+      { label: "Delivery", value: "Telegram" },
+      { label: "Status", value: "Production" },
     ],
+    thumbnailSrc: "/portfolio/case-study-thumbnails/founder-voice.png",
     videoSrc: "/portfolio/founder-voice-showcase.mp4",
+    gallery: [
+      {
+        src: "/portfolio/founder/new-script.png",
+        label: "Script intake — paste an approved founder script",
+      },
+      {
+        src: "/portfolio/founder/pipeline.png",
+        label: "Live pipeline — avatar, edit plan, news, captions",
+      },
+    ],
   },
   {
     slug: "swiftee",
     title: "Swiftee Educational Video Platform",
-    category: "Durable AI video pipeline · Hindi / Hinglish",
+    category: "Educational AI video · Hindi / Hinglish · Slipchat",
     oneLiner:
-      "Type a topic, get a finished 60-second educational short with mascot, voice, and Hinglish subtitles.",
+      "One topic in → a publish-ready 60-second Hindi educational short with mascot, voice, subtitles, and thumbnail.",
     summary:
-      "Automated end-to-end video generation: a single Hindi/Hinglish topic prompt becomes a 10-slide vertical educational short with AI script, b-roll, ElevenLabs voiceover, burned-in Hinglish subtitles, music, and an animated mascot.",
+      "Swiftee turns a single topic into a 10-slide Hinglish script, then generates mascot, voiceover, b-roll, subtitles, music, and thumbnail in parallel — stitching a finished 9:16 video for Slipchat’s rural-learning catalog.",
     elevatorPitch:
-      "A single Inngest durable function (~2,260 LOC) orchestrates Gemini, Kie.ai (image + i2v), ElevenLabs (TTS + STT), and Rendi (FFmpeg-as-a-service) into a retry-safe pipeline. Presets snapshot creative config per job so in-flight renders never break when the team iterates.",
+      "Configurable storytelling presets drive an Inngest durable pipeline (Gemini, Kie.ai, ElevenLabs, Rendi/FFmpeg). Jobs show slide-by-slide progress; only failed slides need regeneration. Operators get a finished short in minutes instead of a multi-day creative cycle.",
     description:
-      "Production pipeline for Slipchat (rural-India learning) that replaces a full creative team — scriptwriter, illustrator, voice artist, editor, motion designer — with one topic submission and a tuned preset.",
+      "Mascot-based educational video generator for vernacular short-form: AI script, character animation, voiceover, image/video generation, subtitle burn-in, music, and automated render — controlled by presets so every episode stays on-brand.",
     tools: [
       "TanStack Start",
       "TypeScript",
       "Supabase",
       "Inngest",
-      "Lovable AI Gateway",
-      "Gemini Flash + Pro",
-      "Kie.ai (grok-imagine)",
-      "ElevenLabs TTS + Scribe",
+      "Gemini",
+      "Kie.ai",
+      "ElevenLabs",
       "Rendi (FFmpeg)",
+      "Lovable AI Gateway",
     ],
     proves: [
-      "2,000+ LOC durable workflow with named steps",
-      "Multi-provider AI pipeline with realtime ops UX",
-      "Production FFmpeg pipeline offloaded to Rendi",
-      "Governance with RLS + SECURITY DEFINER role checks",
+      "Topic → finished 9:16 educational short in production",
+      "Parallel multi-asset AI generation with slide-level recovery",
+      "Hinglish script + scannable Latin subtitles for vernacular audiences",
+      "Preset-driven storytelling that stays stable mid-render",
     ],
     flow: [
       "Topic",
-      "Script",
-      "Concepts",
-      "Images",
-      "Sifti i2v",
-      "TTS",
-      "STT + Hinglish",
+      "10-slide script",
+      "Mascot + images",
+      "Voiceover",
+      "Subtitles",
+      "Music + thumb",
       "FFmpeg merge",
-      "MP4",
+      "9:16 MP4",
     ],
     role: "Lead engineer",
     status: "Production",
     year: "2025",
     problem:
-      "Slipchat needs vernacular short-form video at catalog scale. Manual production took days per video (brief → script → storyboard → image sourcing → voice → edit → subtitle → music → export), was inconsistent across episodes, and was not economically viable.",
+      "Slipchat needs Hindi educational shorts at catalog scale for rural learners. Manual production — brief, script, storyboard, art, voice, edit, subtitles, music, export — took days per episode, drifted in quality, and could not keep up with curriculum demand.",
     solution:
-      "TanStack Start frontend on Lovable Cloud. Operators submit a topic against a tuned preset; an Inngest durable function takes over and runs every external API call as a named `step.run`, every wait as a `step.sleep`. Output is one MP4 stored in Supabase Storage and surfaced in a realtime job dashboard.",
+      "Operators submit one topic against a storytelling preset. Swiftee writes a 10-slide Hinglish script, then runs mascot, voiceover, b-roll, subtitles, music, and thumbnail generation in parallel. The job dashboard shows slide-by-slide progress; failed slides regenerate without re-running the whole video. Output is a publish-ready 60-second 9:16 short.",
     buildNotes: [
-      "Preset bundles slide count, voice ID, subtitle font/size/color, b-roll type, Sifti duration, zoompan, fade timings, and 4 AI system prompts",
-      "Preset is snapshotted into `jobs.preset_snapshot` at submission — creative changes never break in-flight renders",
-      "Kie.ai image batches of 3 to respect rate limits, with `step.sleep` + `step.run` poll loops for taskId completion",
-      "ElevenLabs Scribe gives word-level timestamps used to build the global SRT; defensive fallbacks so subtitles never go blank",
-      "Rendi normalizes scale/fps/pixfmt so per-slide visuals concat cleanly; final merge does concat + narration + music + burn SRT in one chained command",
-      "Public webhook `/api/public/hooks/job-watchdog` rescues orphan / stuck jobs",
+      "Configurable storytelling presets: slide count, voice, subtitle style, b-roll type, timing, and AI system prompts",
+      "Preset snapshotted onto each job so creative tweaks never break in-flight renders",
+      "Parallel asset generation — script, mascot/images, VO, captions, music, thumbnail — then a single FFmpeg stitch",
+      "Slide-level progress UI; regenerate only the failed slide instead of the entire episode",
+      "Hinglish script with a transliteration pass so on-screen captions stay easy to scan",
+      "Rendi (FFmpeg-as-a-service) for normalize → concat → narration → music → burn SRT in one merge",
     ],
     keyDecisions: [
       {
-        title: "Global narration instead of per-slide audio",
+        title: "Topic → short as the product contract",
         detail:
-          "Per-slide narration produced audible cuts at every slide boundary. Refactored to one global ElevenLabs pass with silent visuals adapted to audio length — diagnosed on a real job and shipped end-to-end.",
+          "The success metric is a finished 60-second Hindi educational video, not a pile of intermediate assets. Everything in the pipeline exists to protect that outcome.",
       },
       {
-        title: "Gemini transliteration pass to Hinglish",
+        title: "Parallel production with slide-level recovery",
         detail:
-          "Devanagari STT is accurate but slow to read for the audience. Added an LLM pass to transliterate to Latin Hinglish so subtitles are scannable; defensive fall-throughs keep captions never blank.",
+          "Assets generate in parallel for speed; the dashboard tracks each slide so a single Kie/ElevenLabs failure does not force a full restart.",
       },
       {
-        title: "Inngest over long-lived edge functions",
+        title: "Presets for vernacular storytelling consistency",
         detail:
-          "Kie.ai latencies are minutes, ElevenLabs seconds, Rendi tens of seconds. Inngest checkpoints across all of them; edge functions stay short and stateless.",
+          "Mascot tone, voice, subtitle look, and prompt packs live in presets — curriculum teams get repeatable episodes without re-tuning the model stack every run.",
       },
       {
-        title: "Rendi for FFmpeg",
+        title: "Inngest + Rendi for long media jobs",
         detail:
-          "FFmpeg in a Worker runtime is impossible (no native binaries, no child_process). Rendi offloads the entire merge and accepts chained commands in one round-trip.",
+          "Image/i2v and FFmpeg steps take minutes. Durable Inngest steps checkpoint provider waits; Rendi owns FFmpeg so the app runtime stays free of native binaries.",
       },
     ],
     result: [
-      "Topic → finished MP4 in minutes instead of days",
-      "Fully reproducible output per preset",
-      "Realtime job dashboard with no polling (Supabase Realtime + structured `job_events`)",
-      "Self-healing of stuck Inngest steps via public watchdog webhook",
+      "Topic → finished 9:16 Hindi short in minutes instead of days",
+      "10-slide Hinglish episodes with mascot, VO, subtitles, music, and thumbnail",
+      "Slide-by-slide ops: regenerate failures without re-rendering the whole video",
+      "Preset-locked output suitable for Slipchat’s rural education catalog",
     ],
     recruiterHighlights: [
-      "Single Inngest function at ~2,260 LOC with disciplined unique-step naming for determinism",
-      "Audio-continuity refactor diagnosed on a real failing job and shipped",
-      "Production FFmpeg pipeline via Rendi with normalized concat",
-      "RLS + SECURITY DEFINER + immutable system presets + snapshotted job configs",
+      "Shipped vernacular educational video automation end-to-end for Slipchat",
+      "Parallel AI production pipeline with slide-level failure recovery",
+      "Preset architecture that keeps storytelling stable under iteration",
+      "Production FFmpeg merge via Rendi on a durable Inngest workflow",
     ],
     metrics: [
-      { label: "Per video", value: "Days → minutes" },
-      { label: "AI providers", value: "5" },
-      { label: "Pipeline LOC", value: "~2.2k" },
-      { label: "Slides / video", value: "10" },
+      { label: "Length", value: "60s · 9:16" },
+      { label: "Slides", value: "10" },
+      { label: "Language", value: "Hindi / Hinglish" },
+      { label: "Cycle time", value: "Days → minutes" },
     ],
+    thumbnailSrc: "/portfolio/case-study-thumbnails/swiftee.png",
     videoSrc: "/portfolio/swiftee-showcase.mp4",
+    sampleOutputs: [
+      {
+        series: "Educational shorts",
+        topic: "How The Amul Revolution Changed India",
+        description:
+          "The White Revolution that transformed dairy farming.",
+        videoSrc:
+          "https://upaiwipfawvofthppwlu.supabase.co/storage/v1/object/sign/swiftee-videos/32240e78-f433-4743-ae8b-6393bbe44203.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lN2E4NzhjMC1jNjhhLTQxMDItYTZlNy05OWRiNWFjNDRmZjAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzd2lmdGVlLXZpZGVvcy8zMjI0MGU3OC1mNDMzLTQ3NDMtYWU4Yi02MzkzYmJlNDQyMDMubXA0Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTQ3MTU1NCwiZXhwIjoyMTAwODMxNTU0fQ.4FdsZsZX5oBmmstY0oY6AlxhVXh1YFOowc6RPB1ZoOA",
+      },
+      {
+        series: "Educational shorts",
+        topic: "Who Hid The Treasure Of Padmanabhaswamy Temple",
+        description: "The mystery behind one of the world's richest temples. (v1)",
+        videoSrc:
+          "https://upaiwipfawvofthppwlu.supabase.co/storage/v1/object/sign/swiftee-videos/67914d98-0411-40ea-9a6a-6a6aa45a9569.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lN2E4NzhjMC1jNjhhLTQxMDItYTZlNy05OWRiNWFjNDRmZjAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzd2lmdGVlLXZpZGVvcy82NzkxNGQ5OC0wNDExLTQwZWEtOWE2YS02YTZhYTQ1YTk1NjkubXA0Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTQ3MTU1NSwiZXhwIjoyMTAwODMxNTU1fQ.6Z8VSAVcBq-tBqFTzaN-Bqg9aFLuDy4LyjjxdUkOV0I",
+      },
+      {
+        series: "Educational shorts",
+        topic: "The First Indian To Travel Into Space",
+        description: "The incredible journey of Rakesh Sharma.",
+        videoSrc:
+          "https://upaiwipfawvofthppwlu.supabase.co/storage/v1/object/sign/swiftee-videos/8dcd4853-7dbc-4af0-ad7f-dd3f9d265495.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lN2E4NzhjMC1jNjhhLTQxMDItYTZlNy05OWRiNWFjNDRmZjAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzd2lmdGVlLXZpZGVvcy84ZGNkNDg1My03ZGJjLTRhZjAtYWQ3Zi1kZDNmOWQyNjU0OTUubXA0Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTQ3MTU1NiwiZXhwIjoyMTAwODMxNTU2fQ.w_a-64mFmj9CL_SBfBTmy6iGdkvtVmHLv3A3znHDpaA",
+      },
+      {
+        series: "Educational shorts",
+        topic: "Who Hid The Treasure Of Padmanabhaswamy Temple",
+        description: "The mystery behind one of the world's richest temples. (v2)",
+        videoSrc:
+          "https://upaiwipfawvofthppwlu.supabase.co/storage/v1/object/sign/swiftee-videos/ea516091-3b8f-4d78-926f-036246134b71.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lN2E4NzhjMC1jNjhhLTQxMDItYTZlNy05OWRiNWFjNDRmZjAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzd2lmdGVlLXZpZGVvcy9lYTUxNjA5MS0zYjhmLTRkNzgtOTI2Zi0wMzYyNDYxMzRiNzEubXA0Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTQ3MTU1NiwiZXhwIjoyMTAwODMxNTU2fQ.ExAhnPCE7Qzf-NI5zpbyFUFXGVZo1jvRwSzE88dgZzw",
+      },
+      {
+        series: "Chintu Mastermind",
+        topic: "Why blood is red",
+        videoSrc:
+          "https://upaiwipfawvofthppwlu.supabase.co/storage/v1/object/sign/swiftee-videos/3e75941e-b132-401b-b45b-4e54ffc14e8c.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lN2E4NzhjMC1jNjhhLTQxMDItYTZlNy05OWRiNWFjNDRmZjAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzd2lmdGVlLXZpZGVvcy8zZTc1OTQxZS1iMTMyLTQwMWItYjQ1Yi00ZTU0ZmZjMTRlOGMubXA0Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTQ3MTU1NywiZXhwIjoyMTAwODMxNTU3fQ.nbHKXzNRB7yaEQ33ysRK-VVUSHq2k30_2sRkxAOoJ-0",
+      },
+      {
+        series: "Chintu Mastermind",
+        topic: "Why songs get stuck in your head",
+        videoSrc:
+          "https://upaiwipfawvofthppwlu.supabase.co/storage/v1/object/sign/swiftee-videos/1b3e1e93-3c1e-430f-8548-4ad8e4a7ad0a.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lN2E4NzhjMC1jNjhhLTQxMDItYTZlNy05OWRiNWFjNDRmZjAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzd2lmdGVlLXZpZGVvcy8xYjNlMWU5My0zYzFlLTQzMGYtODU0OC00YWQ4ZTRhN2FkMGEubXA0Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTQ3MTU1NywiZXhwIjoyMTAwODMxNTU3fQ.N1tf4ukIaMgBdptg1D71-c494xXRtrYtL4OoYnqUols",
+      },
+      {
+        series: "Chintu Mastermind",
+        topic: "What is a black hole?",
+        videoSrc:
+          "https://upaiwipfawvofthppwlu.supabase.co/storage/v1/object/sign/swiftee-videos/2b9d1a53-de72-4eac-85e9-9a9e6097bfe4.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lN2E4NzhjMC1jNjhhLTQxMDItYTZlNy05OWRiNWFjNDRmZjAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzd2lmdGVlLXZpZGVvcy8yYjlkMWE1My1kZTcyLTRlYWMtODVlOS05YTllNjA5N2JmZTQubXA0Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTQ3MTU1OCwiZXhwIjoyMTAwODMxNTU4fQ.W1Snf42UVfnS9yypoZCOepWIdnUGlb3JEJ0yNGRCmxE",
+      },
+    ],
   },
   {
     slug: "lead-qualification",
@@ -309,6 +382,7 @@ export const projects: Project[] = [
       { label: "Insights", value: "AI summaries" },
       { label: "Status", value: "Production" },
     ],
+    thumbnailSrc: "/portfolio/case-study-thumbnails/lead-qualification.png",
   },
   {
     slug: "autograde",
@@ -404,6 +478,7 @@ export const projects: Project[] = [
       { label: "Re-runs", value: "Deterministic" },
       { label: "Edge functions", value: "4" },
     ],
+    thumbnailSrc: "/portfolio/case-study-thumbnails/autograde.png",
   },
   {
     slug: "pryzen-creatives",
@@ -500,6 +575,8 @@ export const projects: Project[] = [
       { label: "Drive URL stability", value: "Permanent" },
       { label: "Aspect ratios", value: "1:1 + 9:16" },
     ],
+    thumbnailSrc:
+      "/portfolio/case-study-thumbnails/personalized-creative-distribution.png",
   },
 ];
 

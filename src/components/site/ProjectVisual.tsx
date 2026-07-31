@@ -3,6 +3,7 @@ type Props = {
   variant?: "video" | "screenshot" | "tools" | "content";
   className?: string;
   videoSrc?: string;
+  imageSrc?: string;
   videoControls?: boolean;
 };
 
@@ -11,11 +12,46 @@ export function ProjectVisual({
   variant = "screenshot",
   className = "",
   videoSrc,
+  imageSrc,
   videoControls = false,
 }: Props) {
+  // Prefer real video when present; otherwise use thumbnail so the card
+  // never looks empty. Mock UI is last-resort only.
+  if (videoSrc) {
+    return (
+      <div
+        className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_0_oklch(0_0_0_/_0.03),0_24px_48px_-20px_oklch(0_0_0_/_0.12)] ring-1 ring-foreground/5 ${className}`}
+      >
+        <div className="flex items-center gap-1.5 px-4 h-8 border-b border-border bg-subtle">
+          <span className="h-2.5 w-2.5 rounded-full bg-border" />
+          <span className="h-2.5 w-2.5 rounded-full bg-border" />
+          <span className="h-2.5 w-2.5 rounded-full bg-border" />
+          <span className="ml-3 font-mono text-[10px] text-muted-foreground truncate">
+            {label.toLowerCase().replace(/\s+/g, "-")}.app
+          </span>
+        </div>
+        <PortfolioVideo src={videoSrc} controls={videoControls} label={label} />
+      </div>
+    );
+  }
+
+  if (imageSrc) {
+    return (
+      <div
+        className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_0_oklch(0_0_0_/_0.03),0_24px_48px_-20px_oklch(0_0_0_/_0.12)] ring-1 ring-foreground/5 ${className}`}
+      >
+        <img
+          src={imageSrc}
+          alt={`${label} case study`}
+          className="h-full w-full object-cover object-top"
+          loading="lazy"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_0_oklch(0_0_0_/_0.03),0_24px_48px_-20px_oklch(0_0_0_/_0.12)] ring-1 ring-foreground/5 ${className}`}>
-      {/* mock browser chrome */}
       <div className="flex items-center gap-1.5 px-4 h-8 border-b border-border bg-subtle">
         <span className="h-2.5 w-2.5 rounded-full bg-border" />
         <span className="h-2.5 w-2.5 rounded-full bg-border" />
@@ -25,8 +61,7 @@ export function ProjectVisual({
         </span>
       </div>
 
-      {variant === "video" &&
-        (videoSrc ? <PortfolioVideo src={videoSrc} controls={videoControls} /> : <VideoMock />)}
+      {variant === "video" && <VideoMock />}
       {variant === "tools" && <ToolsMock />}
       {variant === "content" && <ContentMock />}
       {variant === "screenshot" && <ToolsMock />}
@@ -34,7 +69,15 @@ export function ProjectVisual({
   );
 }
 
-function PortfolioVideo({ src, controls }: { src: string; controls: boolean }) {
+function PortfolioVideo({
+  src,
+  controls,
+  label,
+}: {
+  src: string;
+  controls: boolean;
+  label: string;
+}) {
   return (
     <video
       className="h-[calc(100%-2rem)] w-full bg-black object-cover"
@@ -45,7 +88,7 @@ function PortfolioVideo({ src, controls }: { src: string; controls: boolean }) {
       loop={!controls}
       playsInline
       preload="metadata"
-      aria-label="Founder Voice product showcase video"
+      aria-label={`${label} product showcase video`}
     />
   );
 }

@@ -113,7 +113,9 @@ export function SiteHeader() {
           {[
             { href: profile.linkedin, label: "LinkedIn", icon: Linkedin },
             { href: profile.github, label: "GitHub", icon: Github },
-            { href: profile.twitter, label: "X", icon: Twitter },
+            ...(profile.twitter
+              ? [{ href: profile.twitter, label: "X", icon: Twitter }]
+              : []),
           ].map(({ href, label, icon: Icon }) => (
             <a
               key={label}

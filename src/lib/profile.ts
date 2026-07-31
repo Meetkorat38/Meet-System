@@ -1,10 +1,13 @@
 export const profile = {
   name: "Meet Korat",
   title: "AI Automation Engineer",
-  email: "meet@example.com",
-  linkedin: "https://linkedin.com",
-  github: "https://github.com",
-  twitter: "https://x.com",
+  email: "meetkorat903@gmail.com",
+  linkedin: "https://www.linkedin.com/in/meet-korat-335632245/",
+  github: "https://github.com/Meetkorat38",
+  /** No public X/Twitter on CV or personal site — omit from UI when empty */
+  twitter: "",
+  website: "https://koratmeet.me",
+  location: "Nava Naroda, Ahmedabad, India",
   avatar: "/avatar.png",
 
   summary:

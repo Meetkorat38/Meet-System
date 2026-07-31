@@ -20,12 +20,14 @@ export function ProjectCard({ project: p, index, variant }: Props) {
         <div
           className={`p-4 sm:p-5 lg:p-6 ${flip ? "lg:order-2" : "lg:order-1"}`}
         >
-          <div className="lg:max-h-[260px] overflow-hidden rounded-xl">
+          <div className="overflow-hidden rounded-xl">
             <ProjectVisual
               label={p.title}
               variant={variant}
+              imageSrc={p.thumbnailSrc}
               videoSrc={p.videoSrc}
-              className="!aspect-[16/9] lg:!aspect-auto lg:h-[260px]"
+              videoControls={Boolean(p.videoSrc)}
+              className="!aspect-[16/9]"
             />
           </div>
         </div>
