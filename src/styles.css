@@ -236,7 +236,10 @@ body.custom-cursor select {
   background-color: var(--color-pill);
   color: var(--color-subtle-foreground);
   border: 1px solid var(--color-border);
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 @utility pill-hover {
   &:hover { background-color: var(--color-pill-hover); }
@@ -299,6 +302,9 @@ body.custom-cursor select {
   .animate-splash-enter,
   .animate-splash-cursor {
     animation: none;
+  }
+  .pill {
+    transition-property: background-color, border-color;
   }
 }
 

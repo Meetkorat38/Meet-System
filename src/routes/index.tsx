@@ -152,7 +152,7 @@ function Home() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
                 href={`mailto:${profile.email}`}
-                className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 active:scale-[0.97] transition-[opacity,transform] duration-200 motion-reduce:transition-none"
               >
                 <Mail className="h-4 w-4" />
                 Email Me
@@ -161,14 +161,14 @@ function Home() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border bg-background text-sm font-medium hover:bg-pill-hover transition-colors"
+                className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border bg-background text-sm font-medium hover:bg-pill-hover active:scale-[0.97] transition-[background-color,transform] duration-200 motion-reduce:transition-none"
               >
                 <Linkedin className="h-4 w-4" />
                 LinkedIn
               </a>
               <a
                 href="/cv.pdf"
-                className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border bg-background text-sm font-medium hover:bg-pill-hover transition-colors"
+                className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border bg-background text-sm font-medium hover:bg-pill-hover active:scale-[0.97] transition-[background-color,transform] duration-200 motion-reduce:transition-none"
               >
                 <FileDown className="h-4 w-4" />
                 Download CV

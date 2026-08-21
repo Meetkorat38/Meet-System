@@ -143,8 +143,8 @@ function PipelineTerminal() {
 
 function Marquee() {
   return (
-    <div className="mt-10 -mx-6 sm:-mx-10 border-y border-border/60 overflow-hidden">
-      <div className="flex animate-marquee whitespace-nowrap py-3">
+    <div className="mt-10 -mx-6 sm:-mx-10 border-y border-border/60 overflow-hidden group/marquee">
+      <div className="flex animate-marquee whitespace-nowrap py-3 group-hover/marquee:[animation-play-state:paused] motion-reduce:animate-none">
         {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
           <span
             key={`${item}-${i}`}
@@ -205,20 +205,20 @@ export function HeroSection() {
         >
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 h-10 px-5 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/88 transition-colors"
+            className="group/cta inline-flex items-center gap-2 h-10 px-5 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/88 active:scale-[0.97] transition-[background-color,transform] duration-200 motion-reduce:transition-none"
           >
             See the systems I&apos;ve shipped
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover/cta:translate-x-0.5 motion-reduce:transition-none" />
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 h-10 px-5 rounded-full border border-border bg-card text-sm font-medium hover:bg-pill-hover transition-colors"
+            className="inline-flex items-center gap-2 h-10 px-5 rounded-full border border-border bg-card text-sm font-medium hover:bg-pill-hover active:scale-[0.97] transition-[background-color,transform] duration-200 motion-reduce:transition-none"
           >
             Hire me
           </a>
           <a
             href="/cv.pdf"
-            className="inline-flex items-center gap-2 h-10 px-4 rounded-full border border-border bg-card text-sm font-medium hover:bg-pill-hover transition-colors"
+            className="inline-flex items-center gap-2 h-10 px-4 rounded-full border border-border bg-card text-sm font-medium hover:bg-pill-hover active:scale-[0.97] transition-[background-color,transform] duration-200 motion-reduce:transition-none"
           >
             <FileDown className="h-4 w-4" />
             CV

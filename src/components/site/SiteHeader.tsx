@@ -11,7 +11,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { profile } from "@/lib/profile";
 import { useTheme } from "@/hooks/use-theme";
 import { cn } from "@/lib/utils";
@@ -26,7 +26,29 @@ const NAV = [
 export function SiteHeader() {
   const [copied, setCopied] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
   const { theme, toggle } = useTheme();
+
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   const copy = async () => {
     try {
@@ -89,11 +111,24 @@ export function SiteHeader() {
             aria-label="Toggle theme"
             className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-border bg-card hover:bg-pill-hover transition-colors"
           >
-            {theme === "dark" ? (
-              <Sun className="h-4 w-4" />
-            ) : (
-              <Moon className="h-4 w-4" />
-            )}
+            <span className="relative inline-flex h-4 w-4">
+              <Sun
+                className={cn(
+                  "absolute h-4 w-4 transition-[transform,opacity] duration-300 motion-reduce:transition-none",
+                  theme === "dark"
+                    ? "rotate-0 scale-100 opacity-100"
+                    : "rotate-90 scale-0 opacity-0",
+                )}
+              />
+              <Moon
+                className={cn(
+                  "absolute h-4 w-4 transition-[transform,opacity] duration-300 motion-reduce:transition-none",
+                  theme === "dark"
+                    ? "-rotate-90 scale-0 opacity-0"
+                    : "rotate-0 scale-100 opacity-100",
+                )}
+              />
+            </span>
           </button>
           <button
             onClick={copy}
@@ -130,6 +165,12 @@ export function SiteHeader() {
           ))}
         </div>
       </div>
+
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 origin-left bg-foreground/50"
+        style={{ transform: `scaleX(${progress})` }}
+      />
 
       <div
         className={cn(
