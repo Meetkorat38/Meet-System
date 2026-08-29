@@ -41,11 +41,15 @@ export function AboutSection() {
       <Reveal delay={80} className="mt-10">
         <div className="rounded-2xl border border-border bg-card overflow-hidden">
           {/* Tab bar */}
-          <div className="flex border-b border-border">
+          <div className="flex border-b border-border" role="tablist" aria-label="Background">
             {TABS.map(({ id, label }) => (
               <button
                 key={id}
                 type="button"
+                role="tab"
+                id={`about-tab-${id}`}
+                aria-selected={tab === id}
+                aria-controls={`about-panel-${id}`}
                 onClick={() => setTab(id)}
                 className={cn(
                   "flex-1 sm:flex-none px-5 py-3.5 text-sm font-medium transition-colors relative",
@@ -63,7 +67,20 @@ export function AboutSection() {
           </div>
 
           <div className="p-5 sm:p-8">
-            {tab === "experience" && experience.map((e) => (
+            {/*
+              Every panel is rendered server-side and toggled with the `hidden`
+              attribute rather than conditional rendering. Humans see one tab at
+              a time; crawlers and LLMs — which read raw HTML and never compute
+              CSS — see the complete background. This is also the WAI-ARIA
+              tabpanel pattern, so screen readers behave correctly too.
+            */}
+            <div
+              role="tabpanel"
+              id="about-panel-experience"
+              aria-labelledby="about-tab-experience"
+              hidden={tab !== "experience"}
+            >
+            {experience.map((e) => (
               <div key={e.role}>
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="text-lg font-semibold">{e.role}</h3>
@@ -117,8 +134,14 @@ export function AboutSection() {
                 </ul>
               </div>
             ))}
+            </div>
 
-            {tab === "skills" && (
+            <div
+              role="tabpanel"
+              id="about-panel-skills"
+              aria-labelledby="about-tab-skills"
+              hidden={tab !== "skills"}
+            >
               <div>
                 <p className="text-sm text-subtle-foreground mb-5">
                   {allSkills.length} tools across orchestration, voice AI, cloud,
@@ -145,9 +168,14 @@ export function AboutSection() {
                   ))}
                 </div>
               </div>
-            )}
+            </div>
 
-            {tab === "learning" && (
+            <div
+              role="tabpanel"
+              id="about-panel-learning"
+              aria-labelledby="about-tab-learning"
+              hidden={tab !== "learning"}
+            >
               <div>
                 <p className="text-sm text-subtle-foreground mb-5">
                   Actively deepening cloud AI infrastructure and serverless
@@ -159,7 +187,7 @@ export function AboutSection() {
                   ))}
                 </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </Reveal>

@@ -8,6 +8,9 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { LoadingScreen } from "@/components/site/LoadingScreen";
+import { profile } from "@/lib/profile";
+import { absolute, SITE_URL } from "@/lib/site";
+import { buildPerson, graph } from "@/lib/structured-data";
 import { PixelCursor } from "@/components/site/PixelCursor";
 
 import appCss from "../styles.css?url";
@@ -76,12 +79,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: "Meet Korat" },
+      { name: "author", content: profile.name },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "/avatar.png" },
+      { property: "og:site_name", content: `${profile.name} — ${profile.title}` },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:url", content: SITE_URL },
+      // Absolute — scrapers drop relative og:image values.
+      { property: "og:image", content: absolute("/avatar.png") },
       { property: "og:image:alt", content: "Meet Korat — pixel portrait" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:image", content: "/avatar.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: absolute("/avatar.png") },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: graph(buildPerson()),
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

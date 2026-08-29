@@ -17,6 +17,13 @@ import { AboutSection } from "@/components/site/AboutSection";
 import { Reveal } from "@/components/site/Reveal";
 import { projects } from "@/lib/projects";
 import { profile } from "@/lib/profile";
+import { absolute, SITE_URL } from "@/lib/site";
+import {
+  buildProfilePage,
+  buildWebSite,
+  buildWorkList,
+  graph,
+} from "@/lib/structured-data";
 
 const SITE_TITLE = `${profile.name} — ${profile.title}`;
 const SITE_DESC = profile.summary;
@@ -29,6 +36,40 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: SITE_TITLE },
       { property: "og:description", content: SITE_DESC },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESC },
+    ],
+    links: [
+      { rel: "canonical", href: SITE_URL },
+      // Clean Markdown mirrors, for agents that prefer them over HTML.
+      {
+        rel: "alternate",
+        type: "text/plain",
+        href: absolute("/llms.txt"),
+        title: "LLM-readable summary",
+      },
+      {
+        rel: "alternate",
+        type: "text/plain",
+        href: absolute("/llms-full.txt"),
+        title: "Full portfolio for LLMs",
+      },
+      {
+        rel: "alternate",
+        type: "application/json",
+        href: absolute("/api/profile.json"),
+        title: "Machine-readable profile",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        // FAQPage is deliberately omitted: the Q&A is not rendered on the
+        // page, and Google requires structured data to match visible content.
+        // The FAQ is served to agents via /llms.txt and /api/profile.json.
+        children: graph(buildWebSite(), buildProfilePage(), buildWorkList()),
+      },
     ],
   }),
   component: Home,

@@ -68,9 +68,9 @@ export function LoadingScreen() {
         "fixed inset-0 z-[100] flex items-center justify-center bg-background transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
         phase === "fading" && "opacity-0 scale-[1.02] pointer-events-none",
       )}
-      aria-hidden={phase === "fading"}
-      aria-live="polite"
-      aria-label="Loading"
+      // Decorative boot animation. Always hidden from the accessibility tree so
+      // it is never the first thing a screen reader or an LLM reads on the page.
+      aria-hidden="true"
     >
       <div className="paper absolute inset-0 opacity-80" aria-hidden />
 

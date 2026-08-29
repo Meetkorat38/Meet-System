@@ -106,7 +106,20 @@ export function AutomationGallery() {
             </div>
           </aside>
 
-          <AutomationDetailPanel automation={selected} />
+          {/*
+            All eight detail panels are rendered server-side and toggled with the
+            `hidden` attribute instead of swapping one panel in and out. The
+            visible result is identical, but the full problem/workflow/outcome
+            text for every automation now reaches the HTML, where crawlers and
+            LLMs can read it.
+          */}
+          <div>
+            {automations.map((a) => (
+              <div key={a.id} hidden={a.id !== selected.id}>
+                <AutomationDetailPanel automation={a} />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Mobile: list only; detail opens full-screen overlay */}

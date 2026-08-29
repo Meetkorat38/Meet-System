@@ -6,7 +6,7 @@ export const profile = {
   github: "https://github.com/Meetkorat38",
   /** No public X/Twitter on CV or personal site — omit from UI when empty */
   twitter: "",
-  website: "https://koratmeet.me",
+  website: "https://koratmeet.in",
   location: "Nava Naroda, Ahmedabad, India",
   avatar: "/avatar.png",
 
@@ -41,7 +41,62 @@ export const profile = {
     { label: "Songs generated", value: "650+" },
     { label: "Slides automated", value: "600+" },
   ],
+
+  availability: {
+    status: "Open to work",
+    detail:
+      "Actively interviewing for AI Automation Engineer and Applied AI Systems Engineer roles. Open to remote, hybrid, or relocation. Available to start immediately.",
+    workArrangement: ["Remote", "Hybrid", "On-site (Ahmedabad)", "Relocation"],
+  },
 };
+
+/**
+ * Question/answer pairs written for how people and AI assistants actually ask
+ * about a candidate. Feeds the on-page FAQ, FAQPage structured data, and the
+ * /llms-full.txt corpus from one source.
+ */
+export const faq = [
+  {
+    question: "Who is Meet Korat?",
+    answer:
+      "Meet Korat is an AI Automation Engineer based in Ahmedabad, India. He builds production AI systems that automate real business operations — combining LLMs, Voice AI, workflow orchestration, cloud infrastructure, and product engineering. He currently works at Team Because and has shipped five production systems covering content automation, educational video generation, lead qualification, and paper evaluation.",
+  },
+  {
+    question: "What does Meet Korat build?",
+    answer:
+      "Complete AI-powered operational systems rather than isolated API demos. His shipped work includes Founder Voice (founder content automation delivering publish-ready shorts), Swiftee (a Hindi educational video platform generating 60-second shorts from a topic prompt), an AI lead qualification system with Voice AI and SIP calling, AutoGrade (a vision-LLM paper evaluation platform for handwritten and Gujarati scripts), and Pryzen personalized creative distribution.",
+  },
+  {
+    question: "What is Meet Korat's technical stack?",
+    answer:
+      "LLMs and AI: OpenAI, Claude, Gemini, OpenRouter, Grok, Kie AI, prompt engineering. Workflow and orchestration: n8n, Inngest, webhooks, REST APIs, background jobs, event-driven workflows. Voice AI: ElevenLabs, SIP trunking, voice cloning, speech-to-text, text-to-speech. Backend and cloud: Node.js, FastAPI, Supabase, PostgreSQL, Firebase, Railway, Vercel, AWS, Amazon S3, Amazon Bedrock, AWS Lambda, OpenSearch. Frontend and media: React, Next.js, Tailwind CSS, FFmpeg, HeyGen, subtitle generation, AI video editing, image processing.",
+  },
+  {
+    question: "What has Meet Korat actually shipped to production?",
+    answer:
+      "Five production systems, plus eight internal automations. Measurable output includes 650+ personalized jingles generated, 600+ slides automated, and a founder content pipeline that cut turnaround from roughly three hours of manual work to about four minutes. Each project has a full case study covering the problem, solution, architecture, key engineering decisions, and results.",
+  },
+  {
+    question: "Is Meet Korat available for hire?",
+    answer:
+      "Yes. He is actively interviewing for AI Automation Engineer and Applied AI Systems Engineer roles and is available to start immediately. He is open to remote, hybrid, on-site in Ahmedabad, or relocation.",
+  },
+  {
+    question: "What roles is Meet Korat targeting?",
+    answer:
+      "AI Automation Engineer, Applied AI Systems Engineer, AI Product Engineer, and Founding Engineer. His goal is to join an AI-first product company or startup building scalable AI products, learn from experienced engineers, and grow into a senior engineering role.",
+  },
+  {
+    question: "Where is Meet Korat based?",
+    answer:
+      "Nava Naroda, Ahmedabad, Gujarat, India. He works remotely and is open to relocation.",
+  },
+  {
+    question: "How do I contact Meet Korat?",
+    answer:
+      "Email meetkorat903@gmail.com, or connect on LinkedIn at https://www.linkedin.com/in/meet-korat-335632245/. His code is on GitHub at https://github.com/Meetkorat38, his portfolio is at https://koratmeet.in, and his CV is downloadable at https://koratmeet.in/cv.pdf.",
+  },
+];
 
 export const experience = [
   {

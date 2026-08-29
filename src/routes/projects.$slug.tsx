@@ -5,6 +5,12 @@ import { Footer } from "@/components/site/Footer";
 import { ToolPill } from "@/components/site/ToolPill";
 import { ProjectVisual } from "@/components/site/ProjectVisual";
 import { getProject, projects, type Project } from "@/lib/projects";
+import { absolute } from "@/lib/site";
+import {
+  buildProjectSchema,
+  buildBreadcrumbs,
+  graph,
+} from "@/lib/structured-data";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }): { project: Project } => {
@@ -14,15 +20,39 @@ export const Route = createFileRoute("/projects/$slug")({
   },
   head: ({ loaderData }) => {
     const p = loaderData?.project;
+    if (!p) return { meta: [{ title: "Case Study — Meet Korat" }] };
+
+    const url = absolute(`/projects/${p.slug}`);
+    const image = absolute(p.thumbnailSrc ?? "/avatar.png");
+
     return {
-      meta: p
-        ? [
-            { title: `${p.title} — Meet Korat` },
-            { name: "description", content: p.elevatorPitch },
-            { property: "og:title", content: `${p.title} — Meet Korat` },
-            { property: "og:description", content: p.elevatorPitch },
-          ]
-        : [{ title: "Case Study — Meet Korat" }],
+      meta: [
+        { title: `${p.title} — Meet Korat` },
+        { name: "description", content: p.elevatorPitch },
+        { property: "og:title", content: `${p.title} — Meet Korat` },
+        { property: "og:description", content: p.elevatorPitch },
+        { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
+        { property: "og:image", content: image },
+        { name: "twitter:title", content: `${p.title} — Meet Korat` },
+        { name: "twitter:description", content: p.elevatorPitch },
+        { name: "twitter:image", content: image },
+      ],
+      links: [
+        { rel: "canonical", href: url },
+        {
+          rel: "alternate",
+          type: "text/markdown",
+          href: absolute(`/md/projects/${p.slug}.md`),
+          title: `${p.title} as Markdown`,
+        },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: graph(buildProjectSchema(p), buildBreadcrumbs(p)),
+        },
+      ],
     };
   },
   notFoundComponent: () => (

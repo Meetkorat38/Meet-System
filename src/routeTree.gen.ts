@@ -10,12 +10,26 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
+import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as ApiProfileDotjsonRouteImport } from './routes/api.profile[.]json'
+import { Route as MdProjectsSlugRouteImport } from './routes/md.projects.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsFullDottxtRoute = LlmsFullDottxtRouteImport.update({
+  id: '/llms-full.txt',
+  path: '/llms-full.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -28,35 +42,83 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   path: '/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiProfileDotjsonRoute = ApiProfileDotjsonRouteImport.update({
+  id: '/api/profile.json',
+  path: '/api/profile.json',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MdProjectsSlugRoute = MdProjectsSlugRouteImport.update({
+  id: '/md/projects/$slug',
+  path: '/md/projects/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/llms-full.txt': typeof LlmsFullDottxtRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/profile.json': typeof ApiProfileDotjsonRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/md/projects/$slug': typeof MdProjectsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/llms-full.txt': typeof LlmsFullDottxtRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/profile.json': typeof ApiProfileDotjsonRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/md/projects/$slug': typeof MdProjectsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/llms-full.txt': typeof LlmsFullDottxtRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/profile.json': typeof ApiProfileDotjsonRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/md/projects/$slug': typeof MdProjectsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml' | '/projects/$slug'
+  fullPaths:
+    | '/'
+    | '/llms-full.txt'
+    | '/llms.txt'
+    | '/sitemap.xml'
+    | '/api/profile.json'
+    | '/projects/$slug'
+    | '/md/projects/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml' | '/projects/$slug'
-  id: '__root__' | '/' | '/sitemap.xml' | '/projects/$slug'
+  to:
+    | '/'
+    | '/llms-full.txt'
+    | '/llms.txt'
+    | '/sitemap.xml'
+    | '/api/profile.json'
+    | '/projects/$slug'
+    | '/md/projects/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/llms-full.txt'
+    | '/llms.txt'
+    | '/sitemap.xml'
+    | '/api/profile.json'
+    | '/projects/$slug'
+    | '/md/projects/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LlmsFullDottxtRoute: typeof LlmsFullDottxtRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiProfileDotjsonRoute: typeof ApiProfileDotjsonRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
+  MdProjectsSlugRoute: typeof MdProjectsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +128,20 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms-full.txt': {
+      id: '/llms-full.txt'
+      path: '/llms-full.txt'
+      fullPath: '/llms-full.txt'
+      preLoaderRoute: typeof LlmsFullDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -82,13 +158,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/profile.json': {
+      id: '/api/profile.json'
+      path: '/api/profile.json'
+      fullPath: '/api/profile.json'
+      preLoaderRoute: typeof ApiProfileDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/md/projects/$slug': {
+      id: '/md/projects/$slug'
+      path: '/md/projects/$slug'
+      fullPath: '/md/projects/$slug'
+      preLoaderRoute: typeof MdProjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LlmsFullDottxtRoute: LlmsFullDottxtRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiProfileDotjsonRoute: ApiProfileDotjsonRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
+  MdProjectsSlugRoute: MdProjectsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
