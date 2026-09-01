@@ -39,23 +39,118 @@ export type Project = {
   videoSrc?: string;
   gallery?: ProjectGalleryImage[];
   sampleOutputs?: ProjectSampleOutput[];
-  /** Shown when a project was a team effort — states what was and was not mine. */
-  collaboration?: string;
 };
 
 export const projects: Project[] = [
   {
+    slug: "cg-sanchar",
+    title: "CG Sanchar — Multi-State WhatsApp Automation",
+    category: "WhatsApp broadcast automation · multi-tenant · client delivery",
+    oneLiner:
+      "Teams in every state were designing and posting each WhatsApp creative by hand. Now one console generates, reviews, and schedules them all.",
+    summary:
+      "A national education communications programme publishes to WhatsApp channels in every state, each with its own bots, channels, and staff. The tool had to take the manual work away without ever letting one team publish into another team's channel. Operators pick a channel, generate a state-branded creative or upload their own, get a caption written for it, send it through review, and schedule it.",
+    elevatorPitch:
+      "One console runs WhatsApp publishing for every state team: generate a branded creative or upload your own, get a caption drafted for it, review it, and schedule it to the right channel. Each team is confined to its own state, uploads run on single-use signed URLs so no shared credentials exist anywhere in the system, and a person approves before anything reaches a public audience. Around 170 creatives have shipped through it.",
+    description:
+      "Delivered against a live client over weekly working sessions — requirements gathered, features demoed, and scope adjusted week to week rather than against a spec fixed up front.",
+    tools: [
+      "React",
+      "TypeScript",
+      "Supabase",
+      "AWS S3",
+      "AWS CloudFront",
+      "AWS Lambda",
+      "Presigned URLs",
+      "SwiftChat API",
+      "WhatsApp Channels",
+      "Role-based access control",
+      "Lovable",
+    ],
+    proves: [
+      "Designing a system around a client's security constraints rather than around them",
+      "Multi-tenant access control across many independent teams",
+      "Client-facing delivery — requirements, demos, and launch coordination",
+      "Automation with a human review gate where mistakes are public",
+    ],
+    flow: [
+      "Pick channel",
+      "Generate / upload",
+      "Auto-caption",
+      "Review",
+      "Signed upload",
+      "Private bucket + CDN",
+      "SwiftChat",
+      "WhatsApp channel",
+    ],
+    role: "Lead engineer — build and client delivery",
+    status: "Production",
+    year: "2026",
+    problem:
+      "Every state team produced its own WhatsApp posts by hand: build the creative, write the caption, remember which channel it belongs to, post it. It did not scale, branding drifted between states, and nothing stopped someone from publishing into a channel that was not theirs. These posts reach a public audience — a mistake is not something you can quietly undo.",
+    solution:
+      "We worked backwards from the two things that could not move. The client's security team would not share credentials, and each team had to stay inside its own state — so both were made structural rather than something the interface has to remember to enforce. Uploads route through a service that mints a short-lived, single-use URL per file, so no long-lived key is ever distributed and size limits live in one place. Access is modelled per state with three levels, making scope a property of the data rather than a UI check. On top of that sits the part operators actually use: choose a channel, generate a branded creative or bring your own, get a caption drafted from the image and the channel it is going to, review it, schedule it. Generation is automated; publishing stays a decision a person makes.",
+    buildNotes: [
+      "Each state carries its own bots, channels, and team members, so adding a state is configuration rather than a code change",
+      "Three access levels — none, view-only, and edit scoped to a user's own state",
+      "A fixed header panel is composited onto every generated creative so state branding cannot drift",
+      "Captions are drafted from the image plus the destination channel, appending the bot link where one is set",
+      "Custom uploads supported, with a toggle for whether the brand overlay is applied",
+      "Image storage migrated onto the client's own cloud account mid-flight, without downtime",
+    ],
+    keyDecisions: [
+      {
+        title: "Design for having no credentials at all",
+        detail:
+          "The client's security team would not hand over keys, and they were right to refuse. Instead of negotiating, the upload path was built so credentials are never needed: one endpoint issues a time-limited URL per file. The constraint made the system safer than the original plan.",
+      },
+      {
+        title: "Separate who can deliver a file from who can store one",
+        detail:
+          "The bucket blocks public access entirely and a CDN is the only public route to a creative. Storage permissions and delivery permissions stop being the same decision, so opening one never quietly opens the other.",
+      },
+      {
+        title: "Put scoping in the data, not the interface",
+        detail:
+          "Every team edits only its own state, enforced at the access layer rather than by hiding buttons. With many teams publishing to public channels, a mis-scoped post costs far more than carrying a permission model.",
+      },
+      {
+        title: "Automate generation, not publishing",
+        detail:
+          "An operator sees the creative and its caption before anything goes out. Keeping a person on the last step is what makes running this daily, at this reach, safe.",
+      },
+    ],
+    result: [
+      "~170 creatives generated and published through the pipeline",
+      "Per-state manual production replaced by generate, review, schedule",
+      "No shared cloud credentials distributed anywhere in the system",
+      "Each team confined to its own channels, with a review step before publish",
+    ],
+    recruiterHighlights: [
+      "Turned a client security constraint into a better architecture instead of an exception",
+      "Multi-tenant role scoping across many independent teams",
+      "Ran the client relationship directly: weekly requirements, demos, launch",
+      "Migrated storage onto the client's own cloud account without downtime",
+    ],
+    metrics: [
+      { label: "Creatives shipped", value: "~170" },
+      { label: "Scope", value: "Multi-state" },
+      { label: "Access levels", value: "3 · none / view / edit" },
+      { label: "Shared keys", value: "None" },
+    ],
+  },
+  {
     slug: "foresight",
     title: "Foresight — AI Financial Intelligence",
-    category: "AWS medallion data lake · Bedrock RAG · CFO analytics",
+    category: "Finance data platform · governed AI answers · AWS",
     oneLiner:
-      "Spreadsheet sprawl becomes a governed AWS data lake a CFO can ask questions of in plain English.",
+      "A finance team's numbers were trapped in spreadsheets nobody could query. Now they ask in plain English and get an answer that traces back to a row.",
     summary:
-      "Foresight is an AI financial intelligence platform for CFOs. Client finance data moves through a four-layer medallion lake on S3 — pseudo-bronze to bronze to silver to gold — and Claude on Amazon Bedrock generates KPIs, variance summaries, and narrative insight grounded in the modelled tables rather than the raw files.",
+      "Foresight is an AI financial intelligence platform for CFOs. It takes the workbooks a finance team actually runs on — scheduling, supplier invoices, per-event P&L, aged receivables, purchase-register spend — turns them into consistent, queryable tables, and lets a CFO ask questions of them in ordinary language.",
     elevatorPitch:
-      "A four-layer medallion lake on S3 with Glue ETL and Athena over Parquet, with Claude on Bedrock answering in natural language above it. One rule shapes the whole design: Athena never touches the raw layers, and PII is stripped before data reaches silver — so the AI is structurally incapable of reading it. Inference stays in-region, so no financial record leaves the account.",
+      "An AI finance layer a CFO can actually check. Scattered workbooks are rebuilt into layered tables with personal fields dropped on the way through, and a question asked in plain English is answered by querying those tables rather than recalled from training. Every figure traces back to the row it came from, nothing is trained on client data, and a person reviews before a number is treated as final.",
     description:
-      "Built with the team for an Australian CFO-advisory practice, with a not-for-profit education provider as the pilot. Replaces Excel workbooks with query-ready tables covering delivery scheduling, supplier invoices, per-event P&L, aged receivables, and purchase-register spend.",
+      "Built with the team for an Australian CFO-advisory practice, with a not-for-profit education provider as the pilot. Replaces hand-rebuilt spreadsheets with tables anyone can question directly.",
     tools: [
       "AWS S3",
       "AWS Glue",
@@ -72,79 +167,77 @@ export const projects: Project[] = [
       "RAG",
     ],
     proves: [
-      "Medallion data-lake design on AWS, not a notebook prototype",
-      "Grounded RAG over governed tables instead of free-form prompting",
-      "Privacy-by-design as an architectural constraint, not a checklist",
+      "Fixing the data foundation before adding AI on top",
+      "Grounded answers over governed tables instead of free-form prompting",
+      "Privacy designed into the architecture, not bolted on afterwards",
       "Data engineering under real regulatory obligations",
     ],
     flow: [
       "Finance systems",
-      "Pseudo-bronze",
-      "Bronze (Glue)",
-      "Silver",
-      "Gold",
-      "Athena",
-      "Bedrock + RAG",
-      "CFO insight",
+      "Raw landing",
+      "Normalise (ETL)",
+      "Clean tables",
+      "Modelled tables",
+      "Query",
+      "Grounded answer",
+      "Human review",
     ],
-    role: "AI systems & data-platform engineer — team project",
+    role: "AI systems & data-platform engineer",
     status: "Pilot",
     year: "2026",
     problem:
-      "Finance for a multi-entity advisory client lived in Excel workbooks with no queryable source of truth. Scheduling, invoices, P&L, and receivables sat in separate files with inconsistent columns, so every board question meant rebuilding a spreadsheet by hand. Off-the-shelf tools got the arithmetic wrong by picking the wrong line items — and a CFO cannot act on a number nobody can trace.",
+      "Finance for a multi-entity client lived across Excel workbooks with no single source of truth. Scheduling, invoices, P&L, and receivables sat in separate files with columns that did not agree, so every board question meant somebody rebuilding a spreadsheet by hand. The off-the-shelf tools meant to help were quietly picking the wrong line items and getting the arithmetic wrong — and a CFO cannot act on a number nobody can trace back to its source.",
     solution:
-      "A medallion lake on S3: raw workbooks land in pseudo-bronze, Glue ETL normalises them into bronze, and silver and gold hold the minimised, modelled tables. Athena queries those layers as Parquet; Claude on Bedrock turns a natural-language question into a query and grounds its answer in the rows that come back. Every figure traces to a table, and a person reviews before anything is treated as final.",
+      "Rather than put AI in front of the mess, we rebuilt the foundation first. Raw workbooks land untouched so the original is always recoverable, an ETL pass normalises them into consistent tables, and two further layers hold progressively cleaner, modelled data with personal fields stripped on the way through. Only those clean layers can be queried. When a CFO asks a question, the model writes a query against known schemas, runs it, and answers from the rows that come back — so the answer is grounded in the data rather than recalled from training, and every figure traces to a table. Nothing is trained on client data, the model runs inside the client's own region so records never leave it, and a person reviews before any number is treated as final.",
     buildNotes: [
-      "Four-layer medallion split so raw PII and analytics-ready data never share a blast radius",
-      "PII columns stripped before data reaches silver — the AI layer only ever sees minimised tables",
-      "Athena scoped to silver and gold; it never queries pseudo-bronze or bronze directly",
-      "Inference pinned to Bedrock in the client region so financial records never leave the account",
+      "Four layers, each one cleaner than the last, so raw personal data and analytics-ready data never share a blast radius",
+      "Personal fields stripped before data reaches the queryable layers — the AI cannot read what was never carried forward",
+      "Queries are scoped to the clean layers only; the raw landing zone is never reachable from the question path",
+      "The model runs inside the client's own region, so financial records never leave their account",
       "Connector-based access over OAuth (Xero, MYOB, Zoho, Salesforce) — fetch on demand rather than copy wholesale",
-      "Credentials in Secrets Manager, KMS at rest, TLS in transit, CloudTrail on every data access",
-      "Wrote the platform Data Privacy, Security & AI Usage Policy — the control set the build is measured against",
+      "Encryption at rest and in transit, credentials in a managed secret store, and an audit trail on every data access",
+      "Wrote the platform's data-privacy, security, and AI-usage policy — the control set the build is measured against",
     ],
     keyDecisions: [
       {
-        title: "Minimise before silver, not at query time",
+        title: "Fix the data before adding the AI",
         detail:
-          "Stripping PII on the way into silver makes the AI layer structurally incapable of reading it. Filtering at query time would have left the raw columns one prompt-injection away from exposure.",
+          "The instinct is to point a model at the spreadsheets and demo it. That produces answers nobody can check. Building the layered tables first meant every later answer had something solid underneath it.",
       },
       {
-        title: "Grounded queries over a fine-tuned model",
+        title: "Strip personal data on the way in, not at question time",
         detail:
-          "Claude generates SQL against known schemas and answers from the returned rows. Nothing is trained on client data, so there is no secondary-use problem and every number stays traceable to a table.",
+          "Removing personal fields before they reach the queryable layers makes the AI structurally incapable of reading them. Filtering at question time would have left those columns one crafted prompt away from exposure.",
       },
       {
-        title: "Inference stays in-region on Bedrock",
+        title: "Let the model query, not remember",
         detail:
-          "Data residency was a precondition, not a preference. Bedrock keeps the model call inside the same region and account as the lake — something external AI APIs could not offer.",
+          "The model writes a query against known schemas and answers from the rows returned. Nothing is trained on client data, so there is no secondary-use problem — and every number stays traceable to the table it came from.",
       },
       {
-        title: "AI is advisory, with a human before any material action",
+        title: "Keep AI advisory, with a person before anything material",
         detail:
-          "Automated-decision transparency duties land in December 2026. Building human-in-the-loop review and contestability in from the start was far cheaper than retrofitting them after a client audit.",
+          "A wrong number that reaches a board paper is worse than no number at all. Human review and the ability to challenge an answer were designed in from the start rather than retrofitted after the first audit.",
       },
     ],
     result: [
-      "Excel workbooks replaced by query-ready bronze-to-gold tables on S3",
-      "Finance questions answered in natural language without hand-written SQL",
-      "Privacy, security, and AI-usage controls documented and mapped to the AWS stack before pilot go-live",
+      "Scattered workbooks replaced by consistent tables anyone on the team can query",
+      "Finance questions answered in plain language, without hand-written SQL",
       "Every AI-surfaced figure traceable to an underlying table and reviewable by a person",
+      "Privacy, security, and AI-usage controls documented and mapped to the stack before pilot go-live",
     ],
     recruiterHighlights: [
-      "Medallion data-lake architecture on S3, Glue, and Athena in a regulated setting",
-      "Grounded RAG on Bedrock where accuracy is a compliance obligation, not a nice-to-have",
+      "Designed a layered finance data platform on AWS, not a notebook prototype",
+      "Grounded AI answers where accuracy is a compliance obligation, not a nice-to-have",
       "Authored the data-privacy and AI-usage policy the whole team builds against",
-      "Least-privilege IAM, KMS, Secrets Manager, and CloudTrail treated as product requirements",
+      "Least-privilege access, encryption, and audit logging treated as product requirements",
     ],
     metrics: [
-      { label: "Lake layers", value: "4 · bronze → gold" },
-      { label: "Query engine", value: "Athena on Parquet" },
-      { label: "Inference", value: "Claude on Bedrock" },
-      { label: "Residency", value: "In-region, KMS" },
+      { label: "Source of truth", value: "Excel → queryable tables" },
+      { label: "Answers", value: "Grounded, traceable" },
+      { label: "Client data training", value: "None" },
+      { label: "Records leaving region", value: "None" },
     ],
-    collaboration:
-      "Built with the Because team on a shared budget — I do not claim sole authorship. My contribution was the platform Data Privacy, Security & AI Usage Policy that the build is measured against, plus the architecture and AI-layer work described here. The data lake was built alongside teammates.",
   },
   {
     slug: "swiftee",
@@ -475,103 +568,6 @@ export const projects: Project[] = [
       { label: "Edge functions", value: "4" },
     ],
     thumbnailSrc: "/portfolio/case-study-thumbnails/autograde.png",
-  },
-  {
-    slug: "cg-sanchar",
-    title: "CG Sanchar — Multi-State WhatsApp Automation",
-    category: "WhatsApp broadcast automation · multi-tenant · S3 + CloudFront",
-    oneLiner:
-      "One console generates, captions, reviews, and schedules branded creatives out to every state team's WhatsApp channel.",
-    summary:
-      "A scheduling and publishing tool for a multi-state education communications programme. Operators generate a state-branded creative or upload their own, get an auto-written caption, send it through review, and schedule it to the right WhatsApp channel over SwiftChat — with every state scoped to its own bots, channels, and people.",
-    elevatorPitch:
-      "The client security team refused to share IAM keys, so uploads run through a Lambda that mints time-limited presigned S3 URLs, and a private bucket sits behind CloudFront for delivery. Multi-state tenancy with three-level role scoping keeps each team inside its own channels. Around 170 creatives have shipped through the pipeline.",
-    description:
-      "Built and delivered against a live client through weekly requirement sessions — scoping, demoing, and shipping features week over week rather than against a fixed spec.",
-    tools: [
-      "React",
-      "TypeScript",
-      "Supabase",
-      "AWS S3",
-      "AWS CloudFront",
-      "AWS Lambda",
-      "Presigned URLs",
-      "SwiftChat API",
-      "WhatsApp Channels",
-      "Role-based access control",
-      "Lovable",
-    ],
-    proves: [
-      "Multi-tenant access control across independent state teams",
-      "Secure media pipeline designed to a client security team's constraints",
-      "Client-facing delivery — requirements, demos, and launch coordination",
-      "Content automation with a human review gate before publish",
-    ],
-    flow: [
-      "Schedule",
-      "Generate / upload",
-      "Auto-caption",
-      "Review",
-      "Presigned upload",
-      "S3 + CloudFront",
-      "SwiftChat",
-      "WhatsApp channel",
-    ],
-    role: "Lead engineer — build and client delivery",
-    status: "Production",
-    year: "2026",
-    problem:
-      "A national education communications programme needed branded posts going out across many state WhatsApp channels. Each state ran its own bots, channels, and staff, and every creative was produced and posted by hand — with nothing scoping one team out of another's channels, and no review step before something reached a public audience.",
-    solution:
-      "A single console where operators pick a channel, generate a state-branded creative with a fixed header panel or upload their own, get a caption written from the image and channel context, and schedule the post. Review sits between generation and publish. Uploads never touch shared credentials: a Lambda issues a short-lived presigned URL, the file goes straight to a private S3 bucket, and CloudFront serves it.",
-    buildNotes: [
-      "Multi-state tenancy — each state carries its own bots, channels, and team members",
-      "Three-level access model: no access, view-only, and edit scoped to a user's own state",
-      "Fixed header panel composited onto every generated creative so state branding stays consistent",
-      "Captions auto-written from the image plus the selected channel, appending the bot link where one is set",
-      "Custom uploads supported, with a toggle for whether the brand overlay is applied",
-      "Image storage migrated off the app's own bucket onto the client AWS account mid-flight",
-    ],
-    keyDecisions: [
-      {
-        title: "Presigned URLs instead of shared IAM keys",
-        detail:
-          "The client security team would not hand over credentials, and they were right to refuse. A single Lambda endpoint mints a time-limited upload URL per file, so nothing long-lived is ever distributed — and file-size limits get enforced at the same layer.",
-      },
-      {
-        title: "Private bucket behind CloudFront",
-        detail:
-          "The S3 bucket blocks public access entirely and CloudFront is the only public path to a creative. Delivery and storage permissions stop being the same decision.",
-      },
-      {
-        title: "State-scoped roles over a single admin pool",
-        detail:
-          "Every team edits only its own state. With many teams publishing to public channels, the cost of a mis-scoped post is far higher than the cost of carrying a permission model.",
-      },
-      {
-        title: "Review gate before anything reaches a channel",
-        detail:
-          "Generation is automated; publishing is not. An operator sees the creative and its caption before it goes out — the same human-in-the-loop rule that makes daily automated content safe to run.",
-      },
-    ],
-    result: [
-      "~170 creatives generated and published through the pipeline",
-      "Manual per-state creative production replaced by generate, review, schedule",
-      "No shared cloud credentials distributed — uploads run entirely on short-lived presigned URLs",
-      "Each state team scoped to its own channels, with a review step before publish",
-    ],
-    recruiterHighlights: [
-      "Designed a media pipeline around a client security team's hard constraints",
-      "Multi-tenant role scoping across many independent state teams",
-      "Ran the client relationship: weekly requirements, demos, and launch coordination",
-      "Moved image storage onto the client's own AWS account without downtime",
-    ],
-    metrics: [
-      { label: "Creatives shipped", value: "~170" },
-      { label: "Scope", value: "Multi-state" },
-      { label: "Access levels", value: "3 · none / view / edit" },
-      { label: "Media delivery", value: "S3 + CloudFront" },
-    ],
   },
 ];
 

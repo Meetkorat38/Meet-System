@@ -130,12 +130,6 @@ function CaseStudy() {
               </div>
             </dl>
 
-            {p.collaboration && (
-              <p className="mt-8 rounded-xl border border-border bg-subtle/50 px-5 py-4 text-sm text-subtle-foreground leading-relaxed">
-                <span className="font-medium text-foreground">Team project.</span>{" "}
-                {p.collaboration}
-              </p>
-            )}
           </header>
 
           <div className="mt-10">
