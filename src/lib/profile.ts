@@ -64,7 +64,7 @@ export const faq = [
   {
     question: "What does Meet Korat build?",
     answer:
-      "Complete AI-powered operational systems rather than isolated API demos. His shipped work includes Founder Voice (founder content automation delivering publish-ready shorts), Swiftee (a Hindi educational video platform generating 60-second shorts from a topic prompt), an AI lead qualification system with Voice AI and SIP calling, AutoGrade (a vision-LLM paper evaluation platform for handwritten and Gujarati scripts), and Pryzen personalized creative distribution.",
+      "Complete AI-powered operational systems rather than isolated API demos. His shipped work includes Foresight (an AI financial intelligence platform for CFOs built on an AWS medallion data lake with Claude on Bedrock, built with the team), Swiftee (a Hindi educational video platform generating 60-second shorts from a topic prompt), an AI lead qualification system with Voice AI and SIP calling, AutoGrade (a vision-LLM paper evaluation platform for handwritten and Gujarati scripts), and CG Sanchar (multi-state WhatsApp broadcast automation on S3, CloudFront, and presigned-URL uploads).",
   },
   {
     question: "What is Meet Korat's technical stack?",
@@ -110,6 +110,8 @@ export const experience = [
       "Develop AI-powered content generation systems",
       "Build AI lead qualification platforms and Voice AI applications",
       "Deploy cloud-based AI applications across frontend, backend, APIs, and databases",
+      "Contribute to Foresight, a team-built AI financial intelligence platform — AWS medallion data lake, Bedrock RAG, and the data-privacy and AI-usage policy the build follows",
+      "Run client delivery directly: weekly requirement sessions, demos, and launch coordination",
       "Collaborate with marketing, design, and product teams on AI-powered solutions",
     ],
   },

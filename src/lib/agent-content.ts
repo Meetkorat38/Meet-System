@@ -87,6 +87,7 @@ export function toProjectMarkdown(p: Project): string {
     `**Year:** ${p.year}  `,
     `**Canonical URL:** ${absolute(`/projects/${p.slug}`)}`,
     ``,
+    ...(p.collaboration ? [`**Team project:** ${p.collaboration}`, ``] : []),
     `## Summary`,
     ``,
     p.summary,
@@ -336,6 +337,7 @@ export function toProfileJson() {
       results: p.result,
       proves: p.proves,
       highlights: p.recruiterHighlights,
+      collaboration: p.collaboration ?? null,
     })),
     automations: automations.map((a) => ({
       id: a.id,
