@@ -46,7 +46,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "cg-sanchar",
-    title: "CG Sanchar — Multi-State WhatsApp Automation",
+    title: "CG Sanchar - Multi-State WhatsApp Automation",
     category: "WhatsApp broadcast automation · multi-tenant · client delivery",
     oneLiner:
       "Teams in every state were designing and posting each WhatsApp creative by hand. Now one console generates, reviews, and schedules them all.",
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     elevatorPitch:
       "One console runs WhatsApp publishing for every state team: generate a branded creative or upload your own, get a caption drafted for it, review it, and schedule it to the right channel. Each team is confined to its own state, uploads run on single-use signed URLs so no shared credentials exist anywhere in the system, and a person approves before anything reaches a public audience. Around 170 creatives have shipped through it.",
     description:
-      "Delivered against a live client over weekly working sessions — requirements gathered, features demoed, and scope adjusted week to week rather than against a spec fixed up front.",
+      "Delivered against a live client over weekly working sessions - requirements gathered, features demoed, and scope adjusted week to week rather than against a spec fixed up front.",
     tools: [
       "React",
       "TypeScript",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     proves: [
       "Designing a system around a client's security constraints rather than around them",
       "Multi-tenant access control across many independent teams",
-      "Client-facing delivery — requirements, demos, and launch coordination",
+      "Client-facing delivery - requirements, demos, and launch coordination",
       "Automation with a human review gate where mistakes are public",
     ],
     flow: [
@@ -85,16 +85,16 @@ export const projects: Project[] = [
       "SwiftChat",
       "WhatsApp channel",
     ],
-    role: "Lead engineer — build and client delivery",
+    role: "Lead engineer - build and client delivery",
     status: "Production",
     year: "2026",
     problem:
-      "Every state team produced its own WhatsApp posts by hand: build the creative, write the caption, remember which channel it belongs to, post it. It did not scale, branding drifted between states, and nothing stopped someone from publishing into a channel that was not theirs. These posts reach a public audience — a mistake is not something you can quietly undo.",
+      "Every state team produced its own WhatsApp posts by hand: build the creative, write the caption, remember which channel it belongs to, post it. It did not scale, branding drifted between states, and nothing stopped someone from publishing into a channel that was not theirs. These posts reach a public audience - a mistake is not something you can quietly undo.",
     solution:
-      "We worked backwards from the two things that could not move. The client's security team would not share credentials, and each team had to stay inside its own state — so both were made structural rather than something the interface has to remember to enforce. Uploads route through a service that mints a short-lived, single-use URL per file, so no long-lived key is ever distributed and size limits live in one place. Access is modelled per state with three levels, making scope a property of the data rather than a UI check. On top of that sits the part operators actually use: choose a channel, generate a branded creative or bring your own, get a caption drafted from the image and the channel it is going to, review it, schedule it. Generation is automated; publishing stays a decision a person makes.",
+      "We worked backwards from the two things that could not move. The client's security team would not share credentials, and each team had to stay inside its own state - so both were made structural rather than something the interface has to remember to enforce. Uploads route through a service that mints a short-lived, single-use URL per file, so no long-lived key is ever distributed and size limits live in one place. Access is modelled per state with three levels, making scope a property of the data rather than a UI check. On top of that sits the part operators actually use: choose a channel, generate a branded creative or bring your own, get a caption drafted from the image and the channel it is going to, review it, schedule it. Generation is automated; publishing stays a decision a person makes.",
     buildNotes: [
       "Each state carries its own bots, channels, and team members, so adding a state is configuration rather than a code change",
-      "Three access levels — none, view-only, and edit scoped to a user's own state",
+      "Three access levels - none, view-only, and edit scoped to a user's own state",
       "A fixed header panel is composited onto every generated creative so state branding cannot drift",
       "Captions are drafted from the image plus the destination channel, appending the bot link where one is set",
       "Custom uploads supported, with a toggle for whether the brand overlay is applied",
@@ -144,12 +144,12 @@ export const projects: Project[] = [
   },
   {
     slug: "foresight",
-    title: "Foresight — AI Financial Intelligence",
+    title: "Foresight - AI Financial Intelligence",
     category: "Finance data platform · governed AI answers · AWS",
     oneLiner:
       "A finance team's numbers were trapped in spreadsheets nobody could query. Now they ask in plain English and get an answer that traces back to a row.",
     summary:
-      "Foresight is an AI financial intelligence platform for CFOs. It takes the workbooks a finance team actually runs on — scheduling, supplier invoices, per-event P&L, aged receivables, purchase-register spend — turns them into consistent, queryable tables, and lets a CFO ask questions of them in ordinary language.",
+      "Foresight is an AI financial intelligence platform for CFOs. It takes the workbooks a finance team actually runs on - scheduling, supplier invoices, per-event P&L, aged receivables, purchase-register spend - turns them into consistent, queryable tables, and lets a CFO ask questions of them in ordinary language.",
     elevatorPitch:
       "An AI finance layer a CFO can actually check. Scattered workbooks are rebuilt into layered tables with personal fields dropped on the way through, and a question asked in plain English is answered by querying those tables rather than recalled from training. Every figure traces back to the row it came from, nothing is trained on client data, and a person reviews before a number is treated as final.",
     description:
@@ -189,17 +189,17 @@ export const projects: Project[] = [
     status: "Pilot",
     year: "2026",
     problem:
-      "Finance for a multi-entity client lived across Excel workbooks with no single source of truth. Scheduling, invoices, P&L, and receivables sat in separate files with columns that did not agree, so every board question meant somebody rebuilding a spreadsheet by hand. The off-the-shelf tools meant to help were quietly picking the wrong line items and getting the arithmetic wrong — and a CFO cannot act on a number nobody can trace back to its source.",
+      "Finance for a multi-entity client lived across Excel workbooks with no single source of truth. Scheduling, invoices, P&L, and receivables sat in separate files with columns that did not agree, so every board question meant somebody rebuilding a spreadsheet by hand. The off-the-shelf tools meant to help were quietly picking the wrong line items and getting the arithmetic wrong - and a CFO cannot act on a number nobody can trace back to its source.",
     solution:
-      "Rather than put AI in front of the mess, we rebuilt the foundation first. Raw workbooks land untouched so the original is always recoverable, an ETL pass normalises them into consistent tables, and two further layers hold progressively cleaner, modelled data with personal fields stripped on the way through. Only those clean layers can be queried. When a CFO asks a question, the model writes a query against known schemas, runs it, and answers from the rows that come back — so the answer is grounded in the data rather than recalled from training, and every figure traces to a table. Nothing is trained on client data, the model runs inside the client's own region so records never leave it, and a person reviews before any number is treated as final.",
+      "Rather than put AI in front of the mess, we rebuilt the foundation first. Raw workbooks land untouched so the original is always recoverable, an ETL pass normalises them into consistent tables, and two further layers hold progressively cleaner, modelled data with personal fields stripped on the way through. Only those clean layers can be queried. When a CFO asks a question, the model writes a query against known schemas, runs it, and answers from the rows that come back - so the answer is grounded in the data rather than recalled from training, and every figure traces to a table. Nothing is trained on client data, the model runs inside the client's own region so records never leave it, and a person reviews before any number is treated as final.",
     buildNotes: [
       "Four layers, each one cleaner than the last, so raw personal data and analytics-ready data never share a blast radius",
-      "Personal fields stripped before data reaches the queryable layers — the AI cannot read what was never carried forward",
+      "Personal fields stripped before data reaches the queryable layers - the AI cannot read what was never carried forward",
       "Queries are scoped to the clean layers only; the raw landing zone is never reachable from the question path",
       "The model runs inside the client's own region, so financial records never leave their account",
-      "Connector-based access over OAuth (Xero, MYOB, Zoho, Salesforce) — fetch on demand rather than copy wholesale",
+      "Connector-based access over OAuth (Xero, MYOB, Zoho, Salesforce) - fetch on demand rather than copy wholesale",
       "Encryption at rest and in transit, credentials in a managed secret store, and an audit trail on every data access",
-      "Wrote the platform's data-privacy, security, and AI-usage policy — the control set the build is measured against",
+      "Wrote the platform's data-privacy, security, and AI-usage policy - the control set the build is measured against",
     ],
     keyDecisions: [
       {
@@ -215,7 +215,7 @@ export const projects: Project[] = [
       {
         title: "Let the model query, not remember",
         detail:
-          "The model writes a query against known schemas and answers from the rows returned. Nothing is trained on client data, so there is no secondary-use problem — and every number stays traceable to the table it came from.",
+          "The model writes a query against known schemas and answers from the rows returned. Nothing is trained on client data, so there is no secondary-use problem - and every number stays traceable to the table it came from.",
       },
       {
         title: "Keep AI advisory, with a person before anything material",
@@ -250,11 +250,11 @@ export const projects: Project[] = [
     oneLiner:
       "One topic in → a publish-ready 60-second Hindi educational short with mascot, voice, subtitles, and thumbnail.",
     summary:
-      "Swiftee turns a single topic into a 10-slide Hinglish script, then generates mascot, voiceover, b-roll, subtitles, music, and thumbnail in parallel — stitching a finished 9:16 video for Slipchat’s rural-learning catalog.",
+      "Swiftee turns a single topic into a 10-slide Hinglish script, then generates mascot, voiceover, b-roll, subtitles, music, and thumbnail in parallel - stitching a finished 9:16 video for Slipchat’s rural-learning catalog.",
     elevatorPitch:
       "Configurable storytelling presets drive an Inngest durable pipeline (Gemini, Kie.ai, ElevenLabs, Rendi/FFmpeg). Jobs show slide-by-slide progress; only failed slides need regeneration. Operators get a finished short in minutes instead of a multi-day creative cycle.",
     description:
-      "Mascot-based educational video generator for vernacular short-form: AI script, character animation, voiceover, image/video generation, subtitle burn-in, music, and automated render — controlled by presets so every episode stays on-brand.",
+      "Mascot-based educational video generator for vernacular short-form: AI script, character animation, voiceover, image/video generation, subtitle burn-in, music, and automated render - controlled by presets so every episode stays on-brand.",
     tools: [
       "TanStack Start",
       "TypeScript",
@@ -286,13 +286,13 @@ export const projects: Project[] = [
     status: "Production",
     year: "2025",
     problem:
-      "Slipchat needs Hindi educational shorts at catalog scale for rural learners. Manual production — brief, script, storyboard, art, voice, edit, subtitles, music, export — took days per episode, drifted in quality, and could not keep up with curriculum demand.",
+      "Slipchat needs Hindi educational shorts at catalog scale for rural learners. Manual production - brief, script, storyboard, art, voice, edit, subtitles, music, export - took days per episode, drifted in quality, and could not keep up with curriculum demand.",
     solution:
       "Operators submit one topic against a storytelling preset. Swiftee writes a 10-slide Hinglish script, then runs mascot, voiceover, b-roll, subtitles, music, and thumbnail generation in parallel. The job dashboard shows slide-by-slide progress; failed slides regenerate without re-running the whole video. Output is a publish-ready 60-second 9:16 short.",
     buildNotes: [
       "Configurable storytelling presets: slide count, voice, subtitle style, b-roll type, timing, and AI system prompts",
       "Preset snapshotted onto each job so creative tweaks never break in-flight renders",
-      "Parallel asset generation — script, mascot/images, VO, captions, music, thumbnail — then a single FFmpeg stitch",
+      "Parallel asset generation - script, mascot/images, VO, captions, music, thumbnail - then a single FFmpeg stitch",
       "Slide-level progress UI; regenerate only the failed slide instead of the entire episode",
       "Hinglish script with a transliteration pass so on-screen captions stay easy to scan",
       "Rendi (FFmpeg-as-a-service) for normalize → concat → narration → music → burn SRT in one merge",
@@ -311,7 +311,7 @@ export const projects: Project[] = [
       {
         title: "Presets for vernacular storytelling consistency",
         detail:
-          "Mascot tone, voice, subtitle look, and prompt packs live in presets — curriculum teams get repeatable episodes without re-tuning the model stack every run.",
+          "Mascot tone, voice, subtitle look, and prompt packs live in presets - curriculum teams get repeatable episodes without re-tuning the model stack every run.",
       },
       {
         title: "Inngest + Rendi for long media jobs",
@@ -398,9 +398,9 @@ export const projects: Project[] = [
     summary:
       "End-to-end lead qualification platform integrating chatbots, phone verification, OTP flows, SIP-based Voice AI calling, and AI-generated conversation summaries in a unified dashboard.",
     elevatorPitch:
-      "Inbound leads are qualified through a multi-channel stack — web chatbot, OTP phone verification, and AI voice calls via SIP trunking — with every conversation analyzed for intent, objections, and next steps. Operators get a dashboard with AI-generated summaries instead of reading every transcript.",
+      "Inbound leads are qualified through a multi-channel stack - web chatbot, OTP phone verification, and AI voice calls via SIP trunking - with every conversation analyzed for intent, objections, and next steps. Operators get a dashboard with AI-generated summaries instead of reading every transcript.",
     description:
-      "Production platform that replaces manual lead triage with automated qualification, verification, and voice outreach — surfacing structured insights for sales teams.",
+      "Production platform that replaces manual lead triage with automated qualification, verification, and voice outreach - surfacing structured insights for sales teams.",
     tools: [
       "OpenAI",
       "ElevenLabs",
@@ -437,17 +437,17 @@ export const projects: Project[] = [
       {
         title: "Multi-channel qualification, not chat-only",
         detail:
-          "Phone verification and voice calls catch leads that chat alone misses — especially in markets where voice is the primary sales channel.",
+          "Phone verification and voice calls catch leads that chat alone misses - especially in markets where voice is the primary sales channel.",
       },
       {
         title: "AI summaries over raw transcripts",
         detail:
-          "Sales reps get structured insights (intent, objections, next steps) instead of wall-of-text transcripts — dramatically faster triage.",
+          "Sales reps get structured insights (intent, objections, next steps) instead of wall-of-text transcripts - dramatically faster triage.",
       },
       {
         title: "SIP trunking for production voice",
         detail:
-          "Direct SIP integration gives control over call routing, recording, and cost — versus relying on a single SaaS voice provider.",
+          "Direct SIP integration gives control over call routing, recording, and cost - versus relying on a single SaaS voice provider.",
       },
     ],
     result: [
@@ -473,16 +473,16 @@ export const projects: Project[] = [
   },
   {
     slug: "autograde",
-    title: "AutoGrade — AI Paper Evaluation",
+    title: "AutoGrade - AI Paper Evaluation",
     category: "Vision-LLM pipeline · determinism + QC",
     oneLiner:
       "Upload a handwritten student paper, get auditable AI grades with bounding-box evidence in ~2 minutes.",
     summary:
       "Web app where teachers upload a question paper once, then each student's handwritten or scanned PDF. The system returns per-question marks, deductions with evidence, a split-view PDF viewer with bounding-box highlights, and a QC verdict.",
     elevatorPitch:
-      "A fire-and-forget edge chain — extract → grade → qc-check — sidesteps the 150s serverless timeout by treating Postgres status as the orchestrator. Vision-LLM reads handwritten + Gujarati scripts; self-consistency voting at temp=0 makes grading deterministic; an arithmetic QC gate catches AI hallucinations before they reach the teacher.",
+      "A fire-and-forget edge chain - extract → grade → qc-check - sidesteps the 150s serverless timeout by treating Postgres status as the orchestrator. Vision-LLM reads handwritten + Gujarati scripts; self-consistency voting at temp=0 makes grading deterministic; an arithmetic QC gate catches AI hallucinations before they reach the teacher.",
     description:
-      "Handles real-world mess: handwriting, multi-page PDFs, mixed English/Gujarati scripts, merged sub-questions like `3(a,b,c)`, OMR-bubble roll number extraction — with an audit trail a teacher can defend to a parent.",
+      "Handles real-world mess: handwriting, multi-page PDFs, mixed English/Gujarati scripts, merged sub-questions like `3(a,b,c)`, OMR-bubble roll number extraction - with an audit trail a teacher can defend to a parent.",
     tools: [
       "React 18",
       "Vite",
@@ -518,7 +518,7 @@ export const projects: Project[] = [
     solution:
       "React/Vite SPA → Supabase (Postgres + RLS + Auth + Storage + Edge Functions) → Lovable AI Gateway (Gemini Pro, vision). Fire-and-forget edge chain with DB-status orchestration. react-pdf canvas rendering enables bounding-box evidence overlays.",
     buildNotes: [
-      "4 Deno edge functions: parse-question-paper, extract, grade, qc-check — JWT-verified at the boundary, service-role for internal chaining",
+      "4 Deno edge functions: parse-question-paper, extract, grade, qc-check - JWT-verified at the boundary, service-role for internal chaining",
       "Per-question parallel grading at `temp=0`, `top_p=0.1` with self-consistency voting for reproducible marks",
       "qc-check re-derives totals, verifies arithmetic, evaluates evidence quality, flags low-confidence questions; emits PASS / FLAG / FAIL",
       "react-pdf canvas (not iframe) renders pages so deductions can highlight the exact bounding box on click",
@@ -529,7 +529,7 @@ export const projects: Project[] = [
       {
         title: "DB-as-orchestrator instead of Inngest/SQS",
         detail:
-          "Work is self-bounded (one student paper) with no fan-out. Postgres status is the source of truth — inspectable with `SELECT status FROM evaluations`. The right level of complexity for the problem.",
+          "Work is self-bounded (one student paper) with no fan-out. Postgres status is the source of truth - inspectable with `SELECT status FROM evaluations`. The right level of complexity for the problem.",
       },
       {
         title: "Fire-and-forget edge chain",
@@ -539,12 +539,12 @@ export const projects: Project[] = [
       {
         title: "Determinism contract across every AI call",
         detail:
-          "temp=0, top_p=0.1, self-consistency voting. Same paper graded twice produces the same marks — non-negotiable for teacher trust.",
+          "temp=0, top_p=0.1, self-consistency voting. Same paper graded twice produces the same marks - non-negotiable for teacher trust.",
       },
       {
         title: "Canvas (react-pdf), not iframe",
         detail:
-          "Bypasses browser PDF sandboxing AND enables bounding-box overlays for evidence — required for the product UX.",
+          "Bypasses browser PDF sandboxing AND enables bounding-box overlays for evidence - required for the product UX.",
       },
     ],
     result: [
@@ -555,7 +555,7 @@ export const projects: Project[] = [
     ],
     recruiterHighlights: [
       "Vision LLM in production on a messy real-world dataset",
-      "Self-consistency + arithmetic QC as guardrails — not just prompting",
+      "Self-consistency + arithmetic QC as guardrails - not just prompting",
       "Timeout-driven architecture: design the workflow around the runtime constraint",
       "Evidence UX: every AI decision is traceable to a region on the page",
     ],

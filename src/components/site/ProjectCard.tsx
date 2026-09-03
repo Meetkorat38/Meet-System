@@ -16,7 +16,7 @@ export function ProjectCard({ project: p, index, variant }: Props) {
   return (
     <article className="interactive-card rounded-2xl border border-border bg-card overflow-hidden">
       <div className="grid lg:grid-cols-2 lg:items-center">
-        {/* Visual — constrained height so text column balances */}
+        {/* Visual - constrained height so text column balances */}
         <div
           className={`p-4 sm:p-5 lg:p-6 ${flip ? "lg:order-2" : "lg:order-1"}`}
         >
@@ -34,7 +34,7 @@ export function ProjectCard({ project: p, index, variant }: Props) {
           </div>
         </div>
 
-        {/* Text — trimmed content */}
+        {/* Text - trimmed content */}
         <div
           className={`flex flex-col justify-center px-5 sm:px-6 pb-6 lg:py-8 lg:px-8 ${
             flip ? "lg:order-1" : "lg:order-2"

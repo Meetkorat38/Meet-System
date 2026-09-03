@@ -1,6 +1,6 @@
 # Meet-System
 
-Portfolio site for Meet Korat — systems, automations, and product work.
+Portfolio site for Meet Korat - systems, automations, and product work.
 
 ## Stack
 

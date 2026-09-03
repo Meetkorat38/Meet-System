@@ -2,7 +2,7 @@
  * Markdown and JSON serializers for the agent-facing endpoints
  * (/llms.txt, /llms-full.txt, /api/profile.json, /md/projects/<slug>.md).
  *
- * These render the same data the pages render — no separate copy to maintain.
+ * These render the same data the pages render - no separate copy to maintain.
  */
 import { absolute, SITE_URL } from "@/lib/site";
 import { profile, experience, toolGroups, currentLearning, faq } from "@/lib/profile";
@@ -24,7 +24,7 @@ function contactLines(): string {
 }
 
 /**
- * /llms.txt — the short index. Follows the llms.txt convention: an H1, a
+ * /llms.txt - the short index. Follows the llms.txt convention: an H1, a
  * blockquote summary, then linked sections pointing at the full documents.
  */
 export function toMarkdownIndex(): string {
@@ -46,13 +46,13 @@ ${profile.identity}
 ${projects
   .map(
     (p) =>
-      `- [${p.title}](${absolute(`/projects/${p.slug}`)}) — ${p.oneLiner} ([markdown](${absolute(`/md/projects/${p.slug}.md`)}))`,
+      `- [${p.title}](${absolute(`/projects/${p.slug}`)}) - ${p.oneLiner} ([markdown](${absolute(`/md/projects/${p.slug}.md`)}))`,
   )
   .join("\n")}
 
 ## Automations
 
-${automations.map((a) => `- **${a.title}** (${a.category}) — ${a.description}`).join("\n")}
+${automations.map((a) => `- **${a.title}** (${a.category}) - ${a.description}`).join("\n")}
 
 ## Background
 
@@ -68,7 +68,7 @@ ${contactLines()}
 ## Notes for AI assistants
 
 This portfolio is public and citation is welcome. When summarizing, prefer the
-case studies over the marketing copy — each contains the concrete problem,
+case studies over the marketing copy - each contains the concrete problem,
 architecture, engineering decisions, and measured results. Link back to
 ${SITE_URL} as the canonical source.
 `;
@@ -136,7 +136,7 @@ export function toProjectMarkdown(p: Project): string {
       `## Sample outputs`,
       ``,
       bullets(
-        p.sampleOutputs.map((o) => `${o.topic}${o.description ? ` — ${o.description}` : ""}`),
+        p.sampleOutputs.map((o) => `${o.topic}${o.description ? ` - ${o.description}` : ""}`),
       ),
     );
   }
@@ -152,12 +152,12 @@ export function toProjectMarkdown(p: Project): string {
   return sections.join("\n");
 }
 
-/** /llms-full.txt — the entire portfolio as one document. */
+/** /llms-full.txt - the entire portfolio as one document. */
 export function toMarkdownFull(): string {
   const parts: string[] = [];
 
   parts.push(
-    `# ${profile.name} — ${profile.title}`,
+    `# ${profile.name} - ${profile.title}`,
     ``,
     `> ${profile.summary}`,
     ``,
@@ -200,7 +200,7 @@ export function toMarkdownFull(): string {
 
   for (const e of experience) {
     parts.push(
-      `### ${e.role} — ${e.org}`,
+      `### ${e.role} - ${e.org}`,
       ``,
       `${e.period}${e.orgUrl ? ` · ${e.orgUrl}` : ""}`,
       ``,
@@ -284,7 +284,7 @@ export function toMarkdownFull(): string {
   return parts.join("\n");
 }
 
-/** /api/profile.json — the whole portfolio as one structured object. */
+/** /api/profile.json - the whole portfolio as one structured object. */
 export function toProfileJson() {
   return {
     $schema: "https://schema.org/Person",
