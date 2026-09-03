@@ -1,3 +1,5 @@
+import { ProjectAnimation, hasProjectAnimation } from "@/components/site/ProjectAnimation";
+
 type Props = {
   label: string;
   variant?: "video" | "screenshot" | "tools" | "content";
@@ -5,6 +7,9 @@ type Props = {
   videoSrc?: string;
   imageSrc?: string;
   videoControls?: boolean;
+  animation?: string;
+  /** When true, the animated diagram wins over video (cards stay consistent). */
+  preferAnimation?: boolean;
 };
 
 export function ProjectVisual({
@@ -14,10 +19,13 @@ export function ProjectVisual({
   videoSrc,
   imageSrc,
   videoControls = false,
+  animation,
+  preferAnimation = false,
 }: Props) {
+  const showAnimationFirst = preferAnimation && hasProjectAnimation(animation);
   // Prefer real video when present; otherwise use thumbnail so the card
   // never looks empty. Mock UI is last-resort only.
-  if (videoSrc) {
+  if (videoSrc && !showAnimationFirst) {
     return (
       <div
         className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_0_oklch(0_0_0_/_0.03),0_24px_48px_-20px_oklch(0_0_0_/_0.12)] ring-1 ring-foreground/5 ${className}`}
@@ -31,6 +39,27 @@ export function ProjectVisual({
           </span>
         </div>
         <PortfolioVideo src={videoSrc} controls={videoControls} label={label} />
+      </div>
+    );
+  }
+
+  // An animated diagram outranks a static thumbnail, but never a real video.
+  if (hasProjectAnimation(animation)) {
+    return (
+      <div
+        className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_0_oklch(0_0_0_/_0.03),0_24px_48px_-20px_oklch(0_0_0_/_0.12)] ring-1 ring-foreground/5 ${className}`}
+      >
+        <div className="flex items-center gap-1.5 px-4 h-8 border-b border-border bg-subtle">
+          <span className="h-2.5 w-2.5 rounded-full bg-border" />
+          <span className="h-2.5 w-2.5 rounded-full bg-border" />
+          <span className="h-2.5 w-2.5 rounded-full bg-border" />
+          <span className="ml-3 font-mono text-[10px] text-muted-foreground truncate">
+            {label.toLowerCase().replace(/\s+/g, "-")}.app
+          </span>
+        </div>
+        <div className="h-[calc(100%-2rem)] w-full">
+          <ProjectAnimation name={animation!} />
+        </div>
       </div>
     );
   }
@@ -51,7 +80,9 @@ export function ProjectVisual({
   }
 
   return (
-    <div className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_0_oklch(0_0_0_/_0.03),0_24px_48px_-20px_oklch(0_0_0_/_0.12)] ring-1 ring-foreground/5 ${className}`}>
+    <div
+      className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_0_oklch(0_0_0_/_0.03),0_24px_48px_-20px_oklch(0_0_0_/_0.12)] ring-1 ring-foreground/5 ${className}`}
+    >
       <div className="flex items-center gap-1.5 px-4 h-8 border-b border-border bg-subtle">
         <span className="h-2.5 w-2.5 rounded-full bg-border" />
         <span className="h-2.5 w-2.5 rounded-full bg-border" />

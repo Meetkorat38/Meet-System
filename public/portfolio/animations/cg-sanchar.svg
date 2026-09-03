@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="CG Sanchar: one creative is composed, captioned, reviewed, then broadcast to each state channel">
+  <rect x="0" y="0" width="640" height="400" fill="#14121b"/>
+  <text x="36" y="48" font-family="monospace" font-size="11" letter-spacing="1.5" fill="#8f83a8">STATE CHANNELS · ONE CREATIVE</text>
+  <text x="508" y="48" font-family="monospace" font-size="11" letter-spacing="1.5" fill="#8f83a8">BROADCAST</text>
+
+  <!-- compose card -->
+  <rect x="36" y="72" width="252" height="180" rx="14" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+  <rect x="50" y="86" width="224" height="26" rx="6" fill="none" stroke="#3b3554"/>
+  <rect x="50" y="86" width="224" height="26" rx="6" fill="#a78bfa" opacity="0">
+    <animate attributeName="opacity" values="0;0.35;0.35;0" keyTimes="0;0.14;0.94;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.1;0.2;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="50" y="124" width="92" height="72" rx="8" fill="#252138" stroke="#3b3554"/>
+    <circle cx="70" cy="144" r="6" fill="#5d5478"/>
+    <path d="M56,188 L82,160 L104,188 Z M100,188 L116,170 L134,188 Z" fill="#5d5478"/>
+  </g>
+  <g fill="#8b7bb8">
+    <rect x="156" y="128" width="118" height="7" rx="3.5" opacity="0">
+      <animate attributeName="opacity" values="0;0;0.9;0.9;0" keyTimes="0;0.22;0.3;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="156" y="146" width="104" height="7" rx="3.5" opacity="0">
+      <animate attributeName="opacity" values="0;0;0.8;0.8;0" keyTimes="0;0.27;0.35;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="156" y="164" width="74" height="7" rx="3.5" opacity="0">
+      <animate attributeName="opacity" values="0;0;0.7;0.7;0" keyTimes="0;0.32;0.4;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.44;0.5;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <circle cx="256" cy="228" r="14" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+    <path d="M249,228 L254,233 L264,222" fill="none" stroke="#e8e2f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- connectors -->
+  <g fill="none" stroke="#3b3554" stroke-width="1.5">
+    <path id="c1" d="M288,162 L392,162 C440,162 452,95 508,95"/>
+    <path id="c2" d="M288,162 L392,162 C440,162 452,190 508,190"/>
+    <path id="c3" d="M288,162 L392,162 C440,162 452,285 508,285"/>
+  </g>
+  <circle r="4.5" fill="#a78bfa" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0.6;0.63;0.74;0.78" dur="9s" repeatCount="indefinite"/>
+    <animateMotion dur="9s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0.6;0.78" calcMode="linear"><mpath href="#c1"/></animateMotion>
+  </circle>
+  <circle r="4.5" fill="#a78bfa" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0.62;0.65;0.76;0.8" dur="9s" repeatCount="indefinite"/>
+    <animateMotion dur="9s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0.62;0.8" calcMode="linear"><mpath href="#c2"/></animateMotion>
+  </circle>
+  <circle r="4.5" fill="#a78bfa" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0.64;0.67;0.78;0.82" dur="9s" repeatCount="indefinite"/>
+    <animateMotion dur="9s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0.64;0.82" calcMode="linear"><mpath href="#c3"/></animateMotion>
+  </circle>
+
+  <!-- lock -->
+  <g opacity="0.4">
+    <animate attributeName="opacity" values="0.4;1;0.4" keyTimes="0.58;0.7;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="332" y="144" width="30" height="24" rx="7" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+    <rect x="341" y="152" width="12" height="10" rx="2.5" fill="#8f83a8"/>
+  </g>
+
+  <!-- channel tiles -->
+  <g>
+    <rect x="508" y="62" width="96" height="66" rx="12" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+    <rect x="508" y="157" width="96" height="66" rx="12" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+    <rect x="508" y="252" width="96" height="66" rx="12" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+    <circle cx="592" cy="74" r="4" fill="#4ade80" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.74;0.79;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="592" cy="169" r="4" fill="#4ade80" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.76;0.81;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="592" cy="264" r="4" fill="#4ade80" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.78;0.83;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <g font-family="monospace" font-size="10" letter-spacing="1" fill="#8f83a8">
+    <text x="36" y="368">CREATE</text>
+    <text x="148" y="368">CAPTION</text>
+    <text x="272" y="368">REVIEW</text>
+    <text x="382" y="368">BROADCAST</text>
+  </g>
+</svg>

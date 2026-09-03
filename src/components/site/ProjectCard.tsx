@@ -25,8 +25,10 @@ export function ProjectCard({ project: p, index, variant }: Props) {
               label={p.title}
               variant={variant}
               imageSrc={p.thumbnailSrc}
+              animation={p.animation}
               videoSrc={p.videoSrc}
               videoControls={Boolean(p.videoSrc)}
+              preferAnimation
               className="!aspect-[16/9]"
             />
           </div>

@@ -138,6 +138,7 @@ function CaseStudy() {
               variant={p.videoSrc ? "video" : "screenshot"}
               videoSrc={p.videoSrc}
               imageSrc={p.thumbnailSrc}
+              animation={p.animation}
               videoControls={Boolean(p.videoSrc)}
             />
           </div>
