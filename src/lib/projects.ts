@@ -36,6 +36,8 @@ export type Project = {
   metrics: ProjectMetric[];
   accent?: string;
   thumbnailSrc?: string;
+  /** Key for an animated SVG visual, used when there is no screenshot to show. */
+  animation?: string;
   videoSrc?: string;
   gallery?: ProjectGalleryImage[];
   sampleOutputs?: ProjectSampleOutput[];
@@ -138,6 +140,7 @@ export const projects: Project[] = [
       { label: "Access levels", value: "3 · none / view / edit" },
       { label: "Shared keys", value: "None" },
     ],
+    animation: "cg-sanchar",
   },
   {
     slug: "foresight",
@@ -238,6 +241,7 @@ export const projects: Project[] = [
       { label: "Client data training", value: "None" },
       { label: "Records leaving region", value: "None" },
     ],
+    animation: "foresight",
   },
   {
     slug: "swiftee",
@@ -334,13 +338,13 @@ export const projects: Project[] = [
       { label: "Cycle time", value: "Days → minutes" },
     ],
     thumbnailSrc: "/portfolio/case-study-thumbnails/swiftee.png",
+    animation: "swiftee",
     videoSrc: "/portfolio/swiftee-showcase.mp4",
     sampleOutputs: [
       {
         series: "Educational shorts",
         topic: "How The Amul Revolution Changed India",
-        description:
-          "The White Revolution that transformed dairy farming.",
+        description: "The White Revolution that transformed dairy farming.",
         videoSrc:
           "https://upaiwipfawvofthppwlu.supabase.co/storage/v1/object/sign/swiftee-videos/32240e78-f433-4743-ae8b-6393bbe44203.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lN2E4NzhjMC1jNjhhLTQxMDItYTZlNy05OWRiNWFjNDRmZjAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzd2lmdGVlLXZpZGVvcy8zMjI0MGU3OC1mNDMzLTQ3NDMtYWU4Yi02MzkzYmJlNDQyMDMubXA0Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTQ3MTU1NCwiZXhwIjoyMTAwODMxNTU0fQ.4FdsZsZX5oBmmstY0oY6AlxhVXh1YFOowc6RPB1ZoOA",
       },
@@ -414,14 +418,7 @@ export const projects: Project[] = [
       "Conversation analytics and AI summaries",
       "Production dashboard for sales ops",
     ],
-    flow: [
-      "Lead",
-      "Chatbot",
-      "OTP Verify",
-      "Voice AI",
-      "Analytics",
-      "Dashboard",
-    ],
+    flow: ["Lead", "Chatbot", "OTP Verify", "Voice AI", "Analytics", "Dashboard"],
     role: "Solo full-stack + AI engineer",
     status: "Production",
     year: "2025",
@@ -472,6 +469,7 @@ export const projects: Project[] = [
       { label: "Status", value: "Production" },
     ],
     thumbnailSrc: "/portfolio/case-study-thumbnails/lead-qualification.png",
+    animation: "lead-qualification",
   },
   {
     slug: "autograde",
@@ -568,8 +566,8 @@ export const projects: Project[] = [
       { label: "Edge functions", value: "4" },
     ],
     thumbnailSrc: "/portfolio/case-study-thumbnails/autograde.png",
+    animation: "autograde",
   },
 ];
 
-export const getProject = (slug: string) =>
-  projects.find((p) => p.slug === slug);
+export const getProject = (slug: string) => projects.find((p) => p.slug === slug);

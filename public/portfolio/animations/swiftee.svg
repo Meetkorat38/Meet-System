@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Swiftee: one topic fans out into parallel production, then stitches into a finished 9:16 Hindi short">
+  <rect x="0" y="0" width="640" height="400" fill="#14121b"/>
+  <text x="36" y="48" font-family="monospace" font-size="11" letter-spacing="1.5" fill="#8f83a8">ONE TOPIC → PARALLEL PRODUCTION</text>
+  <text x="472" y="48" font-family="monospace" font-size="11" letter-spacing="1.5" fill="#8f83a8">FINISHED SHORT</text>
+
+  <rect x="36" y="84" width="150" height="160" rx="14" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+  <text x="52" y="110" font-family="monospace" font-size="10" fill="#e8e2f5">TOPIC IN</text>
+  <g fill="#8b7bb8">
+    <rect x="52" y="122" width="118" height="9" rx="4.5" opacity="0">
+      <animate attributeName="opacity" values="0;0.9;0.9;0" keyTimes="0;0.14;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="52" y="140" width="96" height="9" rx="4.5" opacity="0">
+      <animate attributeName="opacity" values="0;0;0.8;0.8;0" keyTimes="0;0.1;0.18;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="52" y="158" width="108" height="9" rx="4.5" opacity="0">
+      <animate attributeName="opacity" values="0;0;0.7;0.7;0" keyTimes="0;0.14;0.22;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.14;0.22;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="52" y="188" width="118" height="28" rx="14" fill="none" stroke="#3b3554"/>
+    <text x="111" y="206" text-anchor="middle" font-family="monospace" font-size="9" fill="#8f83a8">PRESET · 10 SLIDES</text>
+  </g>
+
+  <g fill="none" stroke="#3b3554" stroke-width="1.5">
+    <path d="M186,164 L214,164 C226,164 226,136 244,136"/>
+    <path d="M420,176 L452,176 C470,176 470,176 496,176"/>
+  </g>
+  <circle cx="215" cy="158" r="4.5" fill="#a78bfa" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0.3;0.34;0.6;0.64" dur="9s" repeatCount="indefinite"/>
+  </circle>
+
+  <rect x="244" y="76" width="176" height="192" rx="14" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+  <g font-family="monospace" font-size="10" fill="#e8e2f5">
+    <text x="258" y="100">SCRIPT</text>
+    <text x="258" y="128">MASCOT</text>
+    <text x="258" y="156">VOICE</text>
+    <text x="258" y="184">SUBS</text>
+    <text x="258" y="212">MUSIC+THUMB</text>
+  </g>
+  <g fill="#8b7bb8">
+    <rect x="258" y="106" width="148" height="8" rx="4" opacity="0.15"/>
+    <rect x="258" y="106" width="148" height="8" rx="4" opacity="0">
+      <animate attributeName="width" values="0;148;148;0" keyTimes="0;0.48;0.94;1" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.24;0.94;1" dur="9s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="258" y="134" width="148" height="8" rx="4" opacity="0.15"/>
+    <rect x="258" y="162" width="148" height="8" rx="4" opacity="0.15"/>
+    <rect x="258" y="190" width="148" height="8" rx="4" opacity="0.15"/>
+    <rect x="258" y="218" width="148" height="8" rx="4" opacity="0.15"/>
+  </g>
+
+  <rect x="472" y="60" width="132" height="224" rx="16" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+  <rect x="486" y="76" width="104" height="120" rx="10" fill="#2a2540" stroke="#3b3554"/>
+  <path d="M528,116 l26,16 -26,16 z" fill="#a78bfa"/>
+  <g fill="#8b7bb8" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.62;0.72;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="486" y="206" width="104" height="7" rx="3.5"/>
+    <rect x="486" y="220" width="76" height="7" rx="3.5"/>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.72;0.8;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="486" y="236" width="104" height="24" rx="12" fill="none" stroke="#3b3554"/>
+    <text x="538" y="252" text-anchor="middle" font-family="monospace" font-size="9" fill="#8f83a8">60s · 9:16 READY</text>
+  </g>
+
+  <g font-family="monospace" font-size="10" letter-spacing="1" fill="#8f83a8">
+    <text x="36" y="368">TOPIC</text>
+    <text x="148" y="368">PRODUCE</text>
+    <text x="272" y="368">STITCH</text>
+    <text x="382" y="368">SHORT</text>
+  </g>
+</svg>

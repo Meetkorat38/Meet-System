@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="AutoGrade: paper plus script graded in parallel, checked by QC, returned with evidence">
+  <rect x="0" y="0" width="640" height="400" fill="#14121b"/>
+  <text x="36" y="48" font-family="monospace" font-size="11" letter-spacing="1.5" fill="#8f83a8">PAPER + SCRIPT → PARALLEL GRADE</text>
+  <text x="472" y="48" font-family="monospace" font-size="11" letter-spacing="1.5" fill="#8f83a8">EVIDENCE</text>
+
+  <rect x="36" y="84" width="150" height="160" rx="14" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+  <rect x="52" y="100" width="56" height="72" rx="6" fill="#252138" stroke="#3b3554"/>
+  <g fill="#8b7bb8">
+    <rect x="60" y="112" width="40" height="6" rx="3"/>
+    <rect x="60" y="124" width="32" height="6" rx="3"/>
+    <rect x="60" y="136" width="36" height="6" rx="3"/>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.1;0.18;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="114" y="116" width="56" height="72" rx="6" fill="#252138" stroke="#3b3554"/>
+    <path d="M122,132 q6,-8 12,0 q6,8 12,0 M122,148 q6,-8 12,0 q6,8 12,0 M122,164 q6,-8 12,0 q6,8 12,0" fill="none" stroke="#8f83a8" stroke-width="1.4" stroke-linecap="round"/>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.16;0.24;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="52" y="196" width="118" height="28" rx="14" fill="none" stroke="#3b3554"/>
+    <text x="111" y="214" text-anchor="middle" font-family="monospace" font-size="9" fill="#8f83a8">60 × 20 QUESTIONS</text>
+  </g>
+
+  <g fill="none" stroke="#3b3554" stroke-width="1.5">
+    <path d="M186,164 L214,164 C226,164 226,136 244,136"/>
+    <path d="M420,176 L448,176 C460,176 460,166 472,166"/>
+  </g>
+
+  <rect x="244" y="76" width="176" height="158" rx="14" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+  <g font-family="monospace" font-size="10" fill="#e8e2f5" opacity="0">
+    <animate attributeName="opacity" values="0.3;0.3;1;1;0.3" keyTimes="0;0.25;0.35;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <text x="258" y="102">Q1</text>
+    <text x="258" y="128">Q2</text>
+    <text x="258" y="154">Q3</text>
+    <text x="258" y="180">Q4</text>
+  </g>
+  <g font-family="monospace" font-size="10" fill="#a78bfa">
+    <text x="398" y="102" text-anchor="end" opacity="0">8/10<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.35;0.45;0.94;1" dur="9s" repeatCount="indefinite"/></text>
+    <text x="398" y="128" text-anchor="end" opacity="0">6/10<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.4;0.5;0.94;1" dur="9s" repeatCount="indefinite"/></text>
+    <text x="398" y="154" text-anchor="end" opacity="0">9/10<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.45;0.55;0.94;1" dur="9s" repeatCount="indefinite"/></text>
+    <text x="398" y="180" text-anchor="end" opacity="0">7/10<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.94;1" dur="9s" repeatCount="indefinite"/></text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.56;0.64;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="282" y="242" width="100" height="30" rx="15" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+    <text x="332" y="262" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#8f83a8">QC · PASS</text>
+  </g>
+
+  <rect x="472" y="60" width="132" height="224" rx="14" fill="#1d1a28" stroke="#3b3554" stroke-width="1.5"/>
+  <rect x="486" y="76" width="104" height="96" rx="8" fill="#252138" stroke="#3b3554"/>
+  <path d="M494,100 q8,-10 16,0 q8,10 16,0 M494,122 q8,-10 16,0 q8,10 16,0 M494,144 q8,-10 16,0 q8,10 16,0" fill="none" stroke="#5d5478" stroke-width="1.4" stroke-linecap="round"/>
+  <rect x="532" y="114" width="44" height="22" rx="5" fill="none" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="5 3" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0.4;0" keyTimes="0;0.7;0.78;0.92;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+  <g fill="#8b7bb8" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.72;0.82;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="486" y="184" width="104" height="7" rx="3.5"/>
+    <rect x="486" y="200" width="82" height="7" rx="3.5"/>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.78;0.86;0.94;1" dur="9s" repeatCount="indefinite"/>
+    <circle cx="592" cy="252" r="13" fill="#4ade80"/>
+    <path d="M586,252 l4,4 8,-9" fill="none" stroke="#14121b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="monospace" font-size="10" letter-spacing="1" fill="#8f83a8">
+    <text x="36" y="368">EXTRACT</text>
+    <text x="148" y="368">GRADE</text>
+    <text x="272" y="368">QC</text>
+    <text x="382" y="368">RESULT</text>
+  </g>
+</svg>
