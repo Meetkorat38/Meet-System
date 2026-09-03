@@ -169,7 +169,7 @@ export function HeroSection() {
         >
           <img
             src={profile.avatar}
-            alt={`${profile.name} — pixel portrait`}
+            alt={`${profile.name} - pixel portrait`}
             width={88}
             height={88}
             className="mx-auto h-[88px] w-[88px] rounded-2xl border border-border object-cover rotate-[-2deg] shadow-[4px_4px_0_oklch(0_0_0/0.08)] [image-rendering:pixelated]"
@@ -195,7 +195,7 @@ export function HeroSection() {
           style={{ animationDelay: "200ms" }}
         >
           Founder video automation, educational AI video, lead qualification with
-          Voice AI, paper grading with vision models — durable pipelines, not
+          Voice AI, paper grading with vision models - durable pipelines, not
           prompt demos.
         </p>
 
@@ -233,7 +233,7 @@ export function HeroSection() {
         </p>
       </div>
 
-      {/* live terminal — scroll-stopper */}
+      {/* live terminal - scroll-stopper */}
       <div
         className="mt-14 sm:mt-16 max-w-3xl mx-auto animate-fade-up"
         style={{ animationDelay: "400ms" }}

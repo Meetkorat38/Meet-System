@@ -18,7 +18,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             changefreq: "monthly",
             priority: "0.8",
           })),
-          // Agent-facing mirrors — listed so crawlers discover them too.
+          // Agent-facing mirrors - listed so crawlers discover them too.
           { path: "/llms.txt", changefreq: "weekly", priority: "0.6" },
           { path: "/llms-full.txt", changefreq: "weekly", priority: "0.6" },
           ...projects.map((p) => ({

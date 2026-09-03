@@ -2,8 +2,8 @@
  * Animated SVG case-study visuals.
  *
  * These stand in for screenshots on projects whose real UI cannot be shown.
- * They are deliberately built from the same parts as the rest of the site —
- * hairline borders, card fills, mono micro-labels, near-zero chroma — so they
+ * They are deliberately built from the same parts as the rest of the site -
+ * hairline borders, card fills, mono micro-labels, near-zero chroma - so they
  * read as diagrams rather than decoration.
  *
  * Pure CSS animation on inline SVG: no JS, no canvas, renders server-side, and
@@ -64,7 +64,7 @@ function CgSanchar({ className = "" }: { className?: string }) {
             stroke="var(--border)"
             strokeWidth="1.5"
           />
-          {/* branded header strip — wipes in */}
+          {/* branded header strip - wipes in */}
           <clipPath id="cgs-hdr">
             <rect x="50" y="98" width="224" height="26" rx="6" />
           </clipPath>
@@ -110,7 +110,7 @@ function CgSanchar({ className = "" }: { className?: string }) {
             />
           </g>
 
-          {/* caption lines — draw left to right, one after another */}
+          {/* caption lines - draw left to right, one after another */}
           <g>
             <rect
               x="156"

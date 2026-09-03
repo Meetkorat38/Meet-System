@@ -66,12 +66,12 @@ export function AutomationGallery() {
       <Reveal>
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <div className="max-w-xl">
-            <p className="section-label">03 — Automation Gallery</p>
+            <p className="section-label">03 - Automation Gallery</p>
             <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">
               Production workflows at scale.
             </h2>
             <p className="mt-3 text-subtle-foreground text-base leading-relaxed">
-              Select a workflow to read the case study — problem, pipeline, and
+              Select a workflow to read the case study - problem, pipeline, and
               example outputs from each automation.
             </p>
           </div>

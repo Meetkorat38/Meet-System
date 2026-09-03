@@ -49,7 +49,7 @@ function buildEmployer(): Json | undefined {
 
 /**
  * The identity anchor. `knowsAbout` is the field that makes the full stack
- * machine-readable — including tools that only ever lived behind a UI tab.
+ * machine-readable - including tools that only ever lived behind a UI tab.
  */
 export function buildPerson(): Json {
   const skills = toolGroups.flatMap((g) => g.items);
@@ -97,7 +97,7 @@ export function buildWebSite(): Json {
     "@type": "WebSite",
     "@id": ID.website,
     url: SITE_URL,
-    name: `${profile.name} — ${profile.title}`,
+    name: `${profile.name} - ${profile.title}`,
     description: profile.summary,
     inLanguage: "en",
     publisher: { "@id": ID.person },
@@ -110,7 +110,7 @@ export function buildProfilePage(): Json {
     "@type": "ProfilePage",
     "@id": ID.profilePage,
     url: SITE_URL,
-    name: `${profile.name} — ${profile.title}`,
+    name: `${profile.name} - ${profile.title}`,
     description: profile.summary,
     isPartOf: { "@id": ID.website },
     about: { "@id": ID.person },
@@ -121,7 +121,7 @@ export function buildProfilePage(): Json {
 }
 
 /**
- * Not emitted on the page — the Q&A is not rendered in the UI, and Google
+ * Not emitted on the page - the Q&A is not rendered in the UI, and Google
  * requires structured data to reflect visible content. Kept for the agent
  * endpoints, which have no such constraint.
  */

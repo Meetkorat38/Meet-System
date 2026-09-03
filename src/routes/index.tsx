@@ -25,7 +25,7 @@ import {
   graph,
 } from "@/lib/structured-data";
 
-const SITE_TITLE = `${profile.name} — ${profile.title}`;
+const SITE_TITLE = `${profile.name} - ${profile.title}`;
 const SITE_DESC = profile.summary;
 
 export const Route = createFileRoute("/")({
@@ -81,7 +81,7 @@ const valueProps = [
   {
     icon: Layers,
     title: "Full-stack AI systems",
-    desc: "Frontend, backend, APIs, databases, and automation workflows — not just API wrappers.",
+    desc: "Frontend, backend, APIs, databases, and automation workflows - not just API wrappers.",
   },
   {
     icon: Zap,
@@ -96,7 +96,7 @@ const valueProps = [
   {
     icon: Target,
     title: "Business outcomes",
-    desc: "Systems that reduce manual work and improve operational efficiency — built for real teams.",
+    desc: "Systems that reduce manual work and improve operational efficiency - built for real teams.",
   },
 ];
 
@@ -116,12 +116,12 @@ function Home() {
       >
         <Reveal>
           <div className="max-w-2xl">
-            <p className="section-label">01 — Selected Projects</p>
+            <p className="section-label">01 - Selected Projects</p>
             <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">
               Production AI systems, not demos.
             </h2>
             <p className="mt-3 text-subtle-foreground text-base sm:text-lg leading-relaxed">
-              Real systems in production — orchestration, multiple AI providers,
+              Real systems in production - orchestration, multiple AI providers,
               durable state, and measurable business outcomes.
             </p>
           </div>
@@ -148,7 +148,7 @@ function Home() {
         <Reveal>
           <div className="paper rounded-2xl border border-border p-8 sm:p-12">
             <div className="max-w-2xl">
-              <p className="section-label">04 — What I Bring</p>
+              <p className="section-label">04 - What I Bring</p>
               <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">
                 Complete systems, not API demos.
               </h2>
@@ -183,7 +183,7 @@ function Home() {
       >
         <Reveal>
           <div className="rounded-2xl border border-border bg-card px-6 sm:px-12 py-16 sm:py-20 text-center">
-            <p className="section-label">05 — Contact</p>
+            <p className="section-label">05 - Contact</p>
             <h2 className="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight max-w-2xl mx-auto">
               Let&apos;s build production AI systems together.
             </h2>

@@ -82,12 +82,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: profile.name },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: `${profile.name} — ${profile.title}` },
+      { property: "og:site_name", content: `${profile.name} - ${profile.title}` },
       { property: "og:locale", content: "en_US" },
       { property: "og:url", content: SITE_URL },
-      // Absolute — scrapers drop relative og:image values.
+      // Absolute - scrapers drop relative og:image values.
       { property: "og:image", content: absolute("/avatar.png") },
-      { property: "og:image:alt", content: "Meet Korat — pixel portrait" },
+      { property: "og:image:alt", content: "Meet Korat - pixel portrait" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: absolute("/avatar.png") },
     ],

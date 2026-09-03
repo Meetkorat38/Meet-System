@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 type Props = {
   automation: Automation;
   className?: string;
-  /** Removes card chrome — used in full-screen mobile detail */
+  /** Removes card chrome - used in full-screen mobile detail */
   fullscreen?: boolean;
 };
 

@@ -28,7 +28,7 @@ export function AboutSection() {
     <section id="about" className="mx-auto max-w-6xl px-4 sm:px-6 pt-24 sm:pt-32">
       <Reveal>
         <div className="max-w-2xl">
-          <p className="section-label">02 — Background</p>
+          <p className="section-label">02 - Background</p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">
             Experience &amp; Stack
           </h2>
@@ -70,8 +70,8 @@ export function AboutSection() {
             {/*
               Every panel is rendered server-side and toggled with the `hidden`
               attribute rather than conditional rendering. Humans see one tab at
-              a time; crawlers and LLMs — which read raw HTML and never compute
-              CSS — see the complete background. This is also the WAI-ARIA
+              a time; crawlers and LLMs - which read raw HTML and never compute
+              CSS - see the complete background. This is also the WAI-ARIA
               tabpanel pattern, so screen readers behave correctly too.
             */}
             <div
@@ -127,7 +127,7 @@ export function AboutSection() {
                 >
                   {e.highlights.map((h) => (
                     <li key={h} className="flex gap-2 pl-1">
-                      <span className="text-muted-foreground">—</span>
+                      <span className="text-muted-foreground">-</span>
                       <span>{h}</span>
                     </li>
                   ))}

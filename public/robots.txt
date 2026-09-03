@@ -1,4 +1,4 @@
-# koratmeet.in — Meet Korat, AI Automation Engineer
+# koratmeet.in - Meet Korat, AI Automation Engineer
 # Structured summary for AI agents and LLMs: https://koratmeet.in/llms.txt
 # Full corpus in one request:                  https://koratmeet.in/llms-full.txt
 # Machine-readable profile:                    https://koratmeet.in/api/profile.json
