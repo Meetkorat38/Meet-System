@@ -141,6 +141,15 @@ export function toProjectMarkdown(p: Project): string {
     );
   }
 
+  if (p.channels?.length) {
+    sections.push(
+      ``,
+      `## Live channels`,
+      ``,
+      bullets(p.channels.map((c) => `[${c.name}](${c.inviteUrl})`)),
+    );
+  }
+
   sections.push(
     ``,
     `---`,
