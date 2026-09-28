@@ -12,6 +12,12 @@ export type ProjectSampleOutput = {
   series?: string;
 };
 
+export type ProjectChannel = {
+  name: string;
+  inviteUrl: string;
+  avatarSrc?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -41,6 +47,10 @@ export type Project = {
   videoSrc?: string;
   gallery?: ProjectGalleryImage[];
   sampleOutputs?: ProjectSampleOutput[];
+  /** Live channels the automation publishes into. */
+  channels?: ProjectChannel[];
+  /** Creatives the automation actually posted. */
+  postSamples?: ProjectGalleryImage[];
 };
 
 export const projects: Project[] = [
@@ -141,6 +151,87 @@ export const projects: Project[] = [
       { label: "Shared keys", value: "None" },
     ],
     animation: "cg-sanchar",
+    channels: [
+      {
+        name: "SwiftChat Jammu & Kashmir",
+        inviteUrl: "https://whatsapp.com/channel/0029VaZ5G0V05MUk8jgOwQ2s",
+        avatarSrc: "/portfolio/cg-sanchar/channels/jammu-kashmir.jpg",
+      },
+      {
+        name: "SwiftChat Himachal Pradesh",
+        inviteUrl: "https://whatsapp.com/channel/0029Vab3tAEBA1eyMV1FjV20",
+        avatarSrc: "/portfolio/cg-sanchar/channels/himachal-pradesh.jpg",
+      },
+      {
+        name: "SwiftChat Uttarakhand",
+        inviteUrl: "https://whatsapp.com/channel/0029VadkT6DJJhzhbJxXRI0h",
+        avatarSrc: "/portfolio/cg-sanchar/channels/uttarakhand.jpg",
+      },
+      {
+        name: "SwiftChat Madhya Pradesh",
+        inviteUrl: "https://whatsapp.com/channel/0029VaZSBLXC1FuLLJFcVw2p",
+        avatarSrc: "/portfolio/cg-sanchar/channels/madhya-pradesh.jpg",
+      },
+      {
+        name: "SwiftChat Gujarat",
+        inviteUrl: "https://whatsapp.com/channel/0029VbDhr0IAYlUNlOHvur2Q",
+        avatarSrc: "/portfolio/cg-sanchar/channels/gujarat.jpg",
+      },
+      {
+        name: "SwiftChat Tripura",
+        inviteUrl: "https://whatsapp.com/channel/0029VaiqglDDuMRgvJMar047",
+        avatarSrc: "/portfolio/cg-sanchar/channels/tripura.jpg",
+      },
+      {
+        name: "VSK | DNH&DD",
+        inviteUrl: "https://whatsapp.com/channel/0029VaZZlYaFy726Hx67tO2a",
+        avatarSrc: "/portfolio/cg-sanchar/channels/dnh-dd.jpg",
+      },
+      {
+        name: "विद्या समीक्षा केंद्र (VSK), महाराष्ट्र",
+        inviteUrl: "https://whatsapp.com/channel/0029VbBi4VsAe5VsS3hFeQ20",
+        avatarSrc: "/portfolio/cg-sanchar/channels/maharashtra.jpg",
+      },
+      {
+        name: "Goa- VSK - SwiftChat",
+        inviteUrl: "https://whatsapp.com/channel/0029Vadypvm5K3zL7aWOJd0v",
+        avatarSrc: "/portfolio/cg-sanchar/channels/goa.jpg",
+      },
+    ],
+    postSamples: [
+      {
+        src: "/portfolio/cg-sanchar/posts/jk-attendance.webp",
+        label: "J&K · smart attendance reminder",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/uk-nipun.webp",
+        label: "Uttarakhand · NIPUN level tracking bot",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/mh-attendance.webp",
+        label: "Maharashtra · daily class attendance",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/dnhdd-attendance.webp",
+        label: "DNH&DD · morning attendance",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/jk-remedial.webp",
+        label: "J&K · remedial worksheets",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/mh-pat-report.webp",
+        label: "Maharashtra · PAT and attendance reports",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/nagaland-attendance.webp",
+        label: "Nagaland · smart attendance",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/mh-daily-report.webp",
+        label: "Maharashtra · daily class report",
+      },
+    ],
   },
   {
     slug: "foresight",

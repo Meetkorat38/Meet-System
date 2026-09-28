@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Footer } from "@/components/site/Footer";
 import { ToolPill } from "@/components/site/ToolPill";
@@ -229,6 +229,78 @@ function CaseStudy() {
               ))}
             </ul>
           </Section>
+
+          {p.channels && p.channels.length > 0 && (
+            <Section title="Live channels">
+              <p className="mb-6 text-sm text-subtle-foreground leading-relaxed max-w-2xl">
+                The automation publishes into these WhatsApp channels every
+                day. Each state team only sees and schedules its own.
+              </p>
+              <ul className="grid sm:grid-cols-2 gap-4">
+                {p.channels.map((c) => (
+                  <li
+                    key={c.inviteUrl}
+                    className="flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3"
+                  >
+                    {c.avatarSrc ? (
+                      <img
+                        src={c.avatarSrc}
+                        alt=""
+                        className="h-10 w-10 shrink-0 rounded-full border border-border object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-subtle font-mono text-xs">
+                        {c.name.charAt(0)}
+                      </span>
+                    )}
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium leading-snug">
+                        {c.name}
+                      </p>
+                      <a
+                        href={c.inviteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-0.5 inline-flex items-center gap-1 font-mono text-[11px] text-subtle-foreground hover:text-foreground transition-colors"
+                      >
+                        View on WhatsApp
+                        <ArrowUpRight className="h-3 w-3" />
+                      </a>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              {p.postSamples && p.postSamples.length > 0 && (
+                <div className="mt-10">
+                  <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                    Sample posts
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    {p.postSamples.map((img) => (
+                      <figure
+                        key={img.src}
+                        className="overflow-hidden rounded-2xl border border-border bg-card"
+                      >
+                        <a href={img.src} target="_blank" rel="noopener noreferrer">
+                          <img
+                            src={img.src}
+                            alt={img.label}
+                            className="aspect-[6/7] w-full object-cover object-top transition-opacity hover:opacity-90"
+                            loading="lazy"
+                          />
+                        </a>
+                        <figcaption className="border-t border-border px-3 py-2 font-mono text-[10px] leading-snug text-muted-foreground">
+                          {img.label}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </Section>
+          )}
 
           {p.sampleOutputs && p.sampleOutputs.length > 0 && (
             <Section title="Automation outputs">
