@@ -277,19 +277,21 @@ function CaseStudy() {
                   <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
                     Sample posts
                   </p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {p.postSamples.map((img) => (
                       <figure
                         key={img.src}
                         className="overflow-hidden rounded-2xl border border-border bg-card"
                       >
-                        <img
-                          src={img.src}
-                          alt={img.label}
-                          className="aspect-square w-full object-cover object-top"
-                          loading="lazy"
-                        />
-                        <figcaption className="border-t border-border px-3 py-2 font-mono text-[11px] text-muted-foreground">
+                        <a href={img.src} target="_blank" rel="noopener noreferrer">
+                          <img
+                            src={img.src}
+                            alt={img.label}
+                            className="aspect-[6/7] w-full object-cover object-top transition-opacity hover:opacity-90"
+                            loading="lazy"
+                          />
+                        </a>
+                        <figcaption className="border-t border-border px-3 py-2 font-mono text-[10px] leading-snug text-muted-foreground">
                           {img.label}
                         </figcaption>
                       </figure>

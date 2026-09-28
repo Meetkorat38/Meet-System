@@ -198,6 +198,40 @@ export const projects: Project[] = [
         avatarSrc: "/portfolio/cg-sanchar/channels/goa.jpg",
       },
     ],
+    postSamples: [
+      {
+        src: "/portfolio/cg-sanchar/posts/jk-attendance.webp",
+        label: "J&K · smart attendance reminder",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/uk-nipun.webp",
+        label: "Uttarakhand · NIPUN level tracking bot",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/mh-attendance.webp",
+        label: "Maharashtra · daily class attendance",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/dnhdd-attendance.webp",
+        label: "DNH&DD · morning attendance",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/jk-remedial.webp",
+        label: "J&K · remedial worksheets",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/mh-pat-report.webp",
+        label: "Maharashtra · PAT and attendance reports",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/nagaland-attendance.webp",
+        label: "Nagaland · smart attendance",
+      },
+      {
+        src: "/portfolio/cg-sanchar/posts/mh-daily-report.webp",
+        label: "Maharashtra · daily class report",
+      },
+    ],
   },
   {
     slug: "foresight",
