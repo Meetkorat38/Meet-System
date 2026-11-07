@@ -20,7 +20,7 @@ type TabId = (typeof TABS)[number]["id"];
 
 export function AboutSection() {
   const [tab, setTab] = useState<TabId>("experience");
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const allSkills = toolGroups.flatMap((g) => g.items);
 
@@ -103,8 +103,7 @@ export function AboutSection() {
                   )}
                 </p>
                 <p className="mt-4 text-sm text-subtle-foreground leading-relaxed">
-                  Building production AI apps, workflow automation, content
-                  systems, Voice AI, and cloud deployments across the full stack.
+                  First AI engineer at a Gujarat brand and marketing agency. Built its AI automation practice from zero.
                 </p>
                 <button
                   type="button"
@@ -122,7 +121,7 @@ export function AboutSection() {
                 <ul
                   className={cn(
                     "mt-3 space-y-2 text-sm text-subtle-foreground overflow-hidden transition-all duration-300",
-                    expanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+                    expanded ? "max-h-[40rem] opacity-100" : "max-h-0 opacity-0",
                   )}
                 >
                   {e.highlights.map((h) => (

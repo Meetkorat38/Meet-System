@@ -18,7 +18,7 @@ function contactLines(): string {
     `- **LinkedIn:** ${profile.linkedin}`,
     `- **GitHub:** ${profile.github}`,
     `- **Website:** ${SITE_URL}`,
-    `- **CV (PDF):** ${absolute("/cv.pdf")}`,
+    `- **CV (PDF):** ${absolute("/Meet_Korat_CV.pdf")}`,
     `- **Location:** ${profile.location}`,
   ].join("\n");
 }
@@ -310,7 +310,7 @@ export function toProfileJson() {
       website: SITE_URL,
       linkedin: profile.linkedin,
       github: profile.github,
-      cv: absolute("/cv.pdf"),
+      cv: absolute("/Meet_Korat_CV.pdf"),
       avatar: absolute(profile.avatar),
     },
     availability: {

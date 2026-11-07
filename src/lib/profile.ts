@@ -17,7 +17,7 @@ export const profile = {
     "I build AI-powered systems that automate real business operations.",
 
   heroSubtext:
-    "Over the past several months I've designed and delivered founder content automation platforms, educational video generators, AI lead qualification systems, paper evaluation platforms, and workflow automation solutions - turning complex business problems into scalable AI-assisted systems.",
+    "First AI engineer at a Gujarat brand and marketing agency. In 11 months I've shipped WhatsApp publishing for a government education platform (170 creatives across 9 state channels), an AI lead and admissions engine live for 2 clients, an internal AI operating system, and contributed to a finance AI platform showcased at a CFO Symposium in Perth.",
 
   identity:
     "I build AI-powered operational systems that automate business processes, content generation, lead qualification, evaluation workflows, and internal operations. My work combines AI models, workflow automation, cloud infrastructure, APIs, and product engineering to build production-ready systems that solve real business problems.",
@@ -26,7 +26,7 @@ export const profile = {
     "I don't simply integrate AI APIs. I design complete AI-powered operational systems that combine cloud infrastructure, workflow orchestration, automation, media generation, and product thinking to solve real business problems. My focus is building systems that businesses can reliably use in production - not isolated AI demonstrations.",
 
   careerGoal:
-    "Join an AI-first product company or startup as an AI Automation Engineer or Applied AI Systems Engineer - building scalable AI products, learning from experienced engineers, and growing into a senior engineering role.",
+    "I build AI agents and automations that run recurring work on their own, with a human approval step where mistakes are costly. Based in Ahmedabad, open to remote, available immediately.",
 
   targetRoles: [
     "AI Automation Engineer",
@@ -74,7 +74,7 @@ export const faq = [
   {
     question: "What has Meet Korat actually shipped to production?",
     answer:
-      "Five production systems, plus eight internal automations. Measurable output includes 650+ personalized jingles generated, 600+ slides automated, and a founder content pipeline that cut turnaround from roughly three hours of manual work to about four minutes. Each project has a full case study covering the problem, solution, architecture, key engineering decisions, and results.",
+      "Five production systems, plus eight internal automations. Measurable output includes 650+ personalized jingles generated, 600+ slides automated, 170 creatives published across 9 state WhatsApp channels, and AI workflows with per-run cost tracking and model fallbacks. Each project has a full case study covering the problem, solution, architecture, key engineering decisions, and results.",
   },
   {
     question: "Is Meet Korat available for hire?",
@@ -84,7 +84,7 @@ export const faq = [
   {
     question: "What roles is Meet Korat targeting?",
     answer:
-      "AI Automation Engineer, Applied AI Systems Engineer, AI Product Engineer, and Founding Engineer. His goal is to join an AI-first product company or startup building scalable AI products, learn from experienced engineers, and grow into a senior engineering role.",
+      "AI Automation Engineer, Applied AI Systems Engineer, AI Product Engineer, and Founding Engineer. He builds AI agents and automations that run recurring work on their own, with a human approval step where mistakes are costly.",
   },
   {
     question: "Where is Meet Korat based?",
@@ -94,25 +94,23 @@ export const faq = [
   {
     question: "How do I contact Meet Korat?",
     answer:
-      "Email meetkorat903@gmail.com, or connect on LinkedIn at https://www.linkedin.com/in/meet-korat-335632245/. His code is on GitHub at https://github.com/Meetkorat38, his portfolio is at https://koratmeet.in, and his CV is downloadable at https://koratmeet.in/cv.pdf.",
+      "Email meetkorat903@gmail.com, or connect on LinkedIn at https://www.linkedin.com/in/meet-korat-335632245/. His code is on GitHub at https://github.com/Meetkorat38, his portfolio is at https://koratmeet.in, and his CV is downloadable at https://koratmeet.in/Meet_Korat_CV.pdf.",
   },
 ];
 
 export const experience = [
   {
-    role: "AI Automation Engineer",
+    role: "Founding AI Automation Engineer",
     org: "Team Because",
     orgUrl: "https://teambecause.com/",
     period: "Dec 2025 - Present",
     highlights: [
-      "Build production AI applications using modern LLM APIs",
-      "Design automation workflows for internal operations",
-      "Develop AI-powered content generation systems",
-      "Build AI lead qualification platforms and Voice AI applications",
-      "Deploy cloud-based AI applications across frontend, backend, APIs, and databases",
-      "Contribute to Foresight, a team-built AI financial intelligence platform - AWS medallion data lake, Bedrock RAG, and the data-privacy and AI-usage policy the build follows",
-      "Run client delivery directly: weekly requirement sessions, demos, and launch coordination",
-      "Collaborate with marketing, design, and product teams on AI-powered solutions",
+      "First AI engineer at the agency: built its AI automation practice from zero",
+      "CG Sanchar (ConveGenius SwiftChat): WhatsApp publishing for government education. 170 creatives across 9 state channels, per-state access control, zero shared cloud credentials",
+      "BOne, the agency's internal AI operating system (core engineer): durable Inngest jobs with human approval, Composio connectors, model routing with a primary plus 2 fallbacks, per-run cost tracking",
+      "Foresight, a team-built finance AI platform showcased at a CFO Symposium in Perth: contributed to the AWS medallion data lake, Bedrock RAG, and the data-privacy and AI-usage policy",
+      "AI lead and admissions engine with Mem0 memory, OTP verification, ElevenLabs voice agent on SIP, and WhatsApp follow-up. Live for 2 clients",
+      "Run client delivery directly: requirement calls, demos, launch, and monitoring",
     ],
   },
 ];

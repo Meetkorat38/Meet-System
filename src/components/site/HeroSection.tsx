@@ -194,9 +194,7 @@ export function HeroSection() {
           className="mt-6 text-base sm:text-lg text-subtle-foreground leading-relaxed max-w-2xl mx-auto animate-fade-up"
           style={{ animationDelay: "200ms" }}
         >
-          Founder video automation, educational AI video, lead qualification with
-          Voice AI, paper grading with vision models - durable pipelines, not
-          prompt demos.
+          Agents that do the recurring work, with a human on the last step.
         </p>
 
         <div
@@ -211,26 +209,13 @@ export function HeroSection() {
             <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover/cta:translate-x-0.5 motion-reduce:transition-none" />
           </a>
           <a
-            href="#contact"
-            className="inline-flex items-center gap-2 h-10 px-5 rounded-full border border-border bg-card text-sm font-medium hover:bg-pill-hover active:scale-[0.97] transition-[background-color,transform] duration-200 motion-reduce:transition-none"
-          >
-            Hire me
-          </a>
-          <a
-            href="/cv.pdf"
+            href="/Meet_Korat_CV.pdf"
             className="inline-flex items-center gap-2 h-10 px-4 rounded-full border border-border bg-card text-sm font-medium hover:bg-pill-hover active:scale-[0.97] transition-[background-color,transform] duration-200 motion-reduce:transition-none"
           >
             <FileDown className="h-4 w-4" />
             CV
           </a>
         </div>
-
-        <p
-          className="mt-5 font-mono text-[11px] text-muted-foreground animate-fade-up"
-          style={{ animationDelay: "340ms" }}
-        >
-          Open to {profile.targetRoles.slice(0, 3).join(" · ")}
-        </p>
       </div>
 
       {/* live terminal - scroll-stopper */}

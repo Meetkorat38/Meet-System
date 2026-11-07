@@ -139,7 +139,7 @@ export function SiteHeader() {
             {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
           </button>
           <a
-            href="/cv.pdf"
+            href="/Meet_Korat_CV.pdf"
             className="inline-flex items-center gap-1.5 h-8 px-2.5 sm:px-3 rounded-full border border-border bg-card hover:bg-pill-hover text-xs transition-colors font-mono"
           >
             <FileDown className="h-3.5 w-3.5" />

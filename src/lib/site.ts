@@ -5,5 +5,5 @@
  */
 export const SITE_URL = "https://koratmeet.in";
 
-/** Resolve a site-relative path (`/cv.pdf`) to an absolute URL. */
+/** Resolve a site-relative path (`/Meet_Korat_CV.pdf`) to an absolute URL. */
 export const absolute = (path: string): string => new URL(path, SITE_URL).toString();

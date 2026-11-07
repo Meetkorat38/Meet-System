@@ -208,7 +208,7 @@ function Home() {
                 LinkedIn
               </a>
               <a
-                href="/cv.pdf"
+                href="/Meet_Korat_CV.pdf"
                 className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border bg-background text-sm font-medium hover:bg-pill-hover active:scale-[0.97] transition-[background-color,transform] duration-200 motion-reduce:transition-none"
               >
                 <FileDown className="h-4 w-4" />
