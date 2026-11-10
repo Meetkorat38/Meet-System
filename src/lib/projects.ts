@@ -45,6 +45,8 @@ export type Project = {
   /** Key for an animated SVG visual, used when there is no screenshot to show. */
   animation?: string;
   videoSrc?: string;
+  /** Poster frame shown before the video plays. */
+  posterSrc?: string;
   gallery?: ProjectGalleryImage[];
   sampleOutputs?: ProjectSampleOutput[];
   /** Live channels the automation publishes into. */
@@ -151,6 +153,10 @@ export const projects: Project[] = [
       { label: "Shared keys", value: "None" },
     ],
     animation: "cg-sanchar",
+    videoSrc:
+      "https://res.cloudinary.com/dxsalo5wt/video/upload/v1794288853/cg-sanchar-showcase-16x9-v2_psnkxt.mp4",
+    posterSrc:
+      "https://res.cloudinary.com/dxsalo5wt/video/upload/so_20,f_jpg,q_auto,w_1280/v1794288853/cg-sanchar-showcase-16x9-v2_psnkxt.jpg",
     channels: [
       {
         name: "SwiftChat Jammu & Kashmir",

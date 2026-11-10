@@ -5,6 +5,7 @@ type Props = {
   variant?: "video" | "screenshot" | "tools" | "content";
   className?: string;
   videoSrc?: string;
+  posterSrc?: string;
   imageSrc?: string;
   videoControls?: boolean;
   animation?: string;
@@ -17,6 +18,7 @@ export function ProjectVisual({
   variant = "screenshot",
   className = "",
   videoSrc,
+  posterSrc,
   imageSrc,
   videoControls = false,
   animation,
@@ -38,7 +40,12 @@ export function ProjectVisual({
             {label.toLowerCase().replace(/\s+/g, "-")}.app
           </span>
         </div>
-        <PortfolioVideo src={videoSrc} controls={videoControls} label={label} />
+        <PortfolioVideo
+          src={videoSrc}
+          poster={posterSrc}
+          controls={videoControls}
+          label={label}
+        />
       </div>
     );
   }
@@ -102,10 +109,12 @@ export function ProjectVisual({
 
 function PortfolioVideo({
   src,
+  poster,
   controls,
   label,
 }: {
   src: string;
+  poster?: string;
   controls: boolean;
   label: string;
 }) {
@@ -113,6 +122,7 @@ function PortfolioVideo({
     <video
       className="h-[calc(100%-2rem)] w-full bg-black object-cover"
       src={src}
+      poster={poster}
       controls={controls}
       autoPlay={!controls}
       muted={!controls}

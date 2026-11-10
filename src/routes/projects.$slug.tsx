@@ -137,6 +137,7 @@ function CaseStudy() {
               label={p.title}
               variant={p.videoSrc ? "video" : "screenshot"}
               videoSrc={p.videoSrc}
+              posterSrc={p.posterSrc}
               imageSrc={p.thumbnailSrc}
               animation={p.animation}
               videoControls={Boolean(p.videoSrc)}
