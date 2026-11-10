@@ -320,6 +320,10 @@ export const projects: Project[] = [
     ],
     thumbnailSrc: "/portfolio/case-study-thumbnails/lead-qualification.png",
     animation: "lead-qualification",
+    videoSrc:
+      "https://res.cloudinary.com/dxsalo5wt/video/upload/v1794293851/lead-nurturing-showcase-16x9-v1_pwhifr.mp4",
+    posterSrc:
+      "https://res.cloudinary.com/dxsalo5wt/video/upload/so_41,f_jpg,q_auto,w_1280/v1794293851/lead-nurturing-showcase-16x9-v1_pwhifr.jpg",
   },
   {
     slug: "foresight",
