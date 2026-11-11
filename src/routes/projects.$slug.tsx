@@ -132,7 +132,7 @@ function CaseStudy() {
 
           </header>
 
-          <div className="mt-10">
+          <div id="demo" className="mt-10 scroll-mt-24">
             <ProjectVisual
               label={p.title}
               variant={p.videoSrc ? "video" : "screenshot"}

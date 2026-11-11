@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { ProjectVisual } from "@/components/site/ProjectVisual";
 import type { Project } from "@/lib/projects";
 
@@ -11,6 +11,7 @@ type Props = {
 
 export function ProjectCard({ project: p, index, variant }: Props) {
   const flip = index % 2 === 1;
+  const hasVideo = Boolean(p.videoSrc);
 
   return (
     <article className="interactive-card rounded-2xl border border-border bg-card overflow-hidden">
@@ -19,7 +20,20 @@ export function ProjectCard({ project: p, index, variant }: Props) {
         <div
           className={`p-4 sm:p-5 lg:p-6 ${flip ? "lg:order-2" : "lg:order-1"}`}
         >
-          <div className="overflow-hidden rounded-xl">
+          <div className="relative overflow-hidden rounded-xl">
+            {hasVideo && (
+              <Link
+                to="/projects/$slug"
+                params={{ slug: p.slug }}
+                hash="demo"
+                aria-label={`Watch ${p.title} running`}
+                className="group/play absolute inset-0 z-10 flex items-center justify-center bg-black/0 transition-colors duration-200 hover:bg-black/25 focus-visible:bg-black/25"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur-sm transition-transform duration-200 group-hover/play:scale-105 sm:h-11 sm:w-11">
+                  <Play className="ml-0.5 h-3.5 w-3.5 sm:h-4 sm:w-4" fill="currentColor" />
+                </span>
+              </Link>
+            )}
             <ProjectVisual
               label={p.title}
               variant={variant}
@@ -60,14 +74,27 @@ export function ProjectCard({ project: p, index, variant }: Props) {
             ))}
           </div>
 
-          <Link
-            to="/projects/$slug"
-            params={{ slug: p.slug }}
-            className="mt-6 self-start w-fit inline-flex items-center gap-2 h-9 sm:h-10 px-4 sm:px-5 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/88 transition-all duration-200 group/btn hover:gap-2.5"
-          >
-            Case study
-            <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 transition-transform duration-200 group-hover/btn:translate-x-0.5" />
-          </Link>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Link
+              to="/projects/$slug"
+              params={{ slug: p.slug }}
+              className="w-fit inline-flex items-center gap-2 h-9 sm:h-10 px-4 sm:px-5 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/88 transition-all duration-200 group/btn hover:gap-2.5"
+            >
+              Case study
+              <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 transition-transform duration-200 group-hover/btn:translate-x-0.5" />
+            </Link>
+            {hasVideo && (
+              <Link
+                to="/projects/$slug"
+                params={{ slug: p.slug }}
+                hash="demo"
+                className="w-fit inline-flex items-center gap-2 h-9 sm:h-10 px-4 sm:px-5 rounded-full border border-border text-sm font-medium hover:bg-foreground/5 transition-colors duration-200"
+              >
+                <Play className="h-3.5 w-3.5 shrink-0" fill="currentColor" />
+                Watch it run
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </article>
